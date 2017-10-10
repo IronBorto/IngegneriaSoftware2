@@ -1,0 +1,2 @@
+Con questo progetto vogliamo creare una applicazione utile per localizzare
+persone/cose/oggetti/animali/luoghi più o meno famosi a partire da un' immagine

@@ -1,0 +1,21 @@
+Nome sito:
+- Where have i seen this before?
+- Photo detector
+- etc.
+
+Divisione ruoli:
+- Adriano Frontend
+- Carlo backend
+- Luca
+- Michele
+
+Funzioni:
+- Riconoscimento paesaggi
+- Riconoscimento opere d'arte
+- Riconoscimento personaggi famosi
+- etc.
+
+
+Il nostro sito servirà alle persone per aiutare ad identificare un immagine, ad esempio per riconoscere un paesaggio,
+un dipinto, una persona famosa, ecc.
+Inoltre sarà possibile avere ulteriore informazioni sull'immagine caricata.

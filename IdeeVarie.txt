@@ -4,18 +4,19 @@ Nome sito:
 - etc.
 
 Divisione ruoli:
-- Adriano Frontend
+- Adriano frontend
 - Carlo backend
-- Luca
-- Michele
+- Luca backend
+- Michele frontend
 
 Funzioni:
 - Riconoscimento paesaggi
 - Riconoscimento opere d'arte
 - Riconoscimento personaggi famosi
-- etc.
+- Riconoscimento animali o piante
 
+Lingua inglese, anche perché l'API di Google Vision risponde con termini inglesi.
 
 Il nostro sito servirà alle persone per aiutare ad identificare un immagine, ad esempio per riconoscere un paesaggio,
 un dipinto, una persona famosa, ecc.
-Inoltre sarà possibile avere ulteriore informazioni sull'immagine caricata.
+Inoltre sarà possibile avere ulteriori informazioni sull'immagine caricata.

@@ -6,42 +6,19 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Intestazione</title>
+        <title>Home Page</title>
+        <%@include file="index.html"%>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <link rel="stylesheet" href="CSS_barra_principale.css" type="text/css" charset="utf-8" />
-
     </head>
     <body>
-    <center>
-        <div class="container-fluid " id="titolo">
-            <div class="row">
-                <div class="col-3 resize-titolo">
-                    <img src="6c9.png" class="flex-img ">
-                </div>
-                <div class="col-6 resize-titolo">
-
-                    Where have I seen 
-                    <br>
-                    this before?
-
-                </div>
-                <div class="col-3 resize-titolo">
-                    <img src="6c9-reverse.png" class="flex-img" >
-                </div>
-            </div>
-
-        </div>
-    </center>
-
-    <div class="container" id="principale" style="padding-top:30px;">
+    <div class="container" id="principale" style="padding-top:20px;">
         <div class="row">
         <div align="center" class ="resize-titolo col-12">
             What are you searching?
         </div>
         </div>
-        <div class="row" style="padding-top: -200px;">
+        <div class="row">
             <div class="col-3 resize-paragrafo" align="center">
                  <div class ="blocca">
                  Place 
@@ -63,7 +40,7 @@ and open the template in the editor.
                 Work of art 
                 </div>
                 <form action="http://www.google.com">
-                    <input name="place" type="image" src="urlo-munch.jpg" class ="immagine_p_principale">
+                    <input name="place" type="image" src="urloMunch.jpg" class ="immagine_p_principale">
                 </form>
             </div>
             <div class="col-3 resize-paragrafo" align="center">
@@ -71,11 +48,10 @@ and open the template in the editor.
                 Animal or Plant 
                 </div>
                 <form action="http://www.google.com">
-                    <input name="place" type="image" src="leone_1.jpg" class ="immagine_p_principale">
+                    <input name="place" type="image" src="Leone.jpg" class ="immagine_p_principale">
                 </form>
             </div>
         </div>
     </div>
-
-</body>
+    </body>
 </html>

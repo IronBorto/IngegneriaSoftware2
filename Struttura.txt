@@ -1,0 +1,5 @@
+La mia idea era quella di creare un file header che comprende le due faccine e il titotolo del sito,
+così da poterlo includere in tutte le pagine comodamente e facilmente modificabile. Come pagina principale pensavo
+che, al posto di bottoni, potremmo sistemare delle foto di luogo famoso (tipo statua della libertà), attore famoso (tipo
+brad pit), animale famoso (tipo cane) e la foto di un'albero. Queste foto saranno dei link che ti portano alla pagina di
+ricerca per quella determinata categoria. Il resto lo lascerei come mostrato nel file pdf.

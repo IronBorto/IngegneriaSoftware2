@@ -1,0 +1,10 @@
+http://eol.org/api
+
+Nome scientifico: scientificName fino alla prima parentesi tonda
+Descrizione: Description
+Biologia: Biology
+Dove vivono: Range description
+allegata la mappa(dataSubtype:Map)
+Speranza di vita: (subject: http://rs.tdwg.org/ontology/voc/SPMInfoItems#LifeExpectancy) prelevare il primo paragrafo
+Animale a rischio estinzione: IUCN Red List Assessment (id=\"red_list_category_title\")
+Popolazione: Population

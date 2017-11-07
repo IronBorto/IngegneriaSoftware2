@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+// Import the Base64 encoding library.
+import org.apache.commons.codec.binary.Base64;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -25,12 +27,15 @@ public class HttpClient {
 
         httpConnection.setDoOutput(true);
 
+
+        // Encode the image.
+        byte[] imageData = Base64.encodeBase64(imageFile.getBytes());
+
         BufferedWriter httpRequestBodyWriter = new BufferedWriter(new
                 OutputStreamWriter(httpConnection.getOutputStream()));
         httpRequestBodyWriter.write
                 ("{\"requests\":  [{ \"features\":  [ {\"type\": \"LABEL_DETECTION\""
-                        +"}], \"image\": {\"source\": { \"gcsImageUri\":"
-                        +" \"gs://vision-sample-images/4_Kittens.jpg\"}}," +
+                        +"}], \"image\": {\"\"content\":" + imageData +"}," +
                         "\"features\": [{\"type\": \"LABEL_DETECTION\"}," +
                         +"{\"type\": \"WEB_DETECTION\"}," +
                         +"{\"type\": \"LANDMARK_DETECTION\"}]}]}");

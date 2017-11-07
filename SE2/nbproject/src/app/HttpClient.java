@@ -30,7 +30,10 @@ public class HttpClient {
         httpRequestBodyWriter.write
                 ("{\"requests\":  [{ \"features\":  [ {\"type\": \"LABEL_DETECTION\""
                         +"}], \"image\": {\"source\": { \"gcsImageUri\":"
-                        +" \"gs://vision-sample-images/4_Kittens.jpg\"}}}]}");
+                        +" \"gs://vision-sample-images/4_Kittens.jpg\"}}," +
+                        "\"features\": [{\"type\": \"LABEL_DETECTION\"}," +
+                        +"{\"type\": \"WEB_DETECTION\"}," +
+                        +"{\"type\": \"LANDMARK_DETECTION\"}]}]}");
         httpRequestBodyWriter.close();
 
         String response = httpConnection.getResponseMessage();

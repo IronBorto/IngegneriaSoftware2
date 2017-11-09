@@ -16,10 +16,9 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="/app/CSS_barra_principale.css" type="text/css" charset="utf-8" />
         <link rel="stylesheet" href="styles.css">
-        
-                    
-              
-	
+        <script src="https://unpkg.com/core-js/client/shim.min.js"></script>
+        <script src="https://unpkg.com/zone.js@0.7.4?main=browser"></script>
+        <script src="https://unpkg.com/systemjs@0.19.39/dist/system.src.js"></script>
         <script src="systemjs.config.js"></script>
         <script>
           System.import('main.js').catch(function(err){ console.error(err); });
@@ -27,7 +26,7 @@ and open the template in the editor.
         
     </head>
     <body>
-            <iframe src="app/header.html" width="100%" frameborder="0"></iframe>
+            
         <my-app>Caricamento in corso...</my-app>
 
     <div class="container" id="principale" style="padding-top:30px;">

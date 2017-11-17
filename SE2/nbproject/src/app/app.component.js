@@ -10,13 +10,27 @@ var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
         this.name = 'Angular';
+        this.slideIndex = 0;
     }
+    AppComponent.prototype.carousel = function () {
+        var i;
+        var x = document.getElementsByClassName("SlideShow");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        this.slideIndex++;
+        if (this.slideIndex > x.length) {
+            this.slideIndex = 1;
+        }
+        x[this.slideIndex - 1].style.display = "block";
+        setTimeout(3000); // Change image every 2 seconds
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        templateUrl: './header.html'
+        templateUrl: './app.component.html'
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

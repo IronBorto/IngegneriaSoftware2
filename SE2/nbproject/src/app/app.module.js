@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
+var header_1 = require("./header");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -20,7 +21,8 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule
         ],
         declarations: [
-            app_component_1.AppComponent
+            app_component_1.AppComponent,
+            header_1.Header
         ],
         bootstrap: [app_component_1.AppComponent]
     })

@@ -6,8 +6,6 @@
 
 
 var slideIndex = 0;
-carousel();
-
 
 function carousel() {
    var i;

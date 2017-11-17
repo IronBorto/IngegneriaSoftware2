@@ -2,13 +2,15 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component'
+import { Header } from './header'
 
 @NgModule({
   imports: [
     BrowserModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    Header
   ],
   bootstrap: [ AppComponent ]
 })

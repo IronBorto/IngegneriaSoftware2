@@ -16,78 +16,24 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="/app/CSS_barra_principale.css" type="text/css" charset="utf-8" />
         <link rel="stylesheet" href="styles.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="node_modules/core-js/client/shim.min.js"></script>
+        <script src="node_modules/zone.js/dist/zone.js"></script>
+        <script src="node_modules/systemjs/dist/system.src.js"></script>
 	
         <script src="systemjs.config.js"></script>
+
+        <script type="text/javascript" src="app/SlideShow.js"></script>
         <script>
           System.import('main.js').catch(function(err){ console.error(err); });
         </script>
         
     </head>
     <body>
+        <center>
         <my-app>Caricamento in corso...</my-app>
-
-    <div class="container" id="principale" style="padding-top:30px;">
-        <div class="row">
-            <div align="center" class ="resize-titolo col-12">
-                What are you searching?
-            </div>
-        </div>
-        <div class="row" style="padding-top: -200px;">
-            <div class="col-3 resize-paragrafo" align="center">
-                <div class ="blocca">
-                    Place 
-                </div>
-                <a href="/app/place.html">
-                    <img src="/images/torre_eiffel.jpeg" class="immagine_p_principale" alt="place">
-                </a>
-            </div>
-            <div class="col-3 resize-paragrafo" align="center">
-                <div class ="blocca">
-                    People 
-                </div>
-                <a href="/app/people.html">  
-                    <img src="/images/brad-pitt-1.jpg" class="immagine_p_principale" alt="people">
-                </a>
-            </div>
-            <div class="col-3 resize-paragrafo" align="center">
-                <div class ="blocca">
-                    Artwork
-                </div>
-                <a href="/app/art.html">
-                    <img src="/images/urlo-munch.jpg" class="immagine_p_principale" alt="work of art">
-                </a>
-            </div>
-            <div class="col-3 resize-paragrafo" align="center">
-                <div class ="blocca">
-                    Animal 
-                </div>
-                <a href="/app/animal.html">
-                    <img src="/images/leone_1.jpg" class="immagine_p_principale" alt="animal or plant">
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class ="row" align ="center" style="padding-top:20px;">
-        <div class="col-8 resize-titolo mr-auto ml-auto" >
-            <div>
-                Popular search:
-            </div>
-            <div class="resize-paragrafo" style="width:100%; padding-top:20px;">
-                <div class="SlideShow">
-                    <span align ="center">Basilica of St. John Lateran</span>
-                    <img src="images/slideshow2.jpg" style="width:100%; border-radius: 50px 50px 50px 50px; border-color: gray; border-style: solid;   border-width: 1px;">
-                </div>
-                <div class="SlideShow">
-                    <span align ="center">Brad Pitt</span>
-                    <img src="images/slideshow.jpg" style="width:100%; border-radius: 50px 50px 50px 50px; border-color: gray; border-style: solid;   border-width: 1px;">
-                    
-                </div>
-            </div>
-            <script type="text/javascript" src="/app/SlideShow.js"></script>
-            
-        </div>
-        
-    </div>
+        </center>
+    
 
 </body>
 </html>

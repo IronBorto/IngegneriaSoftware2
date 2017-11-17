@@ -28,14 +28,14 @@ export class AppComponent  {
   private sparkqlData = null;
   constructor(private http: Http) { }
 
-  sparkql() {
+  sparkql() { //Inserire testo ricerca
     let headers: Headers = new Headers({
       'Content-type': 'application/x-www-form-urlencoded',
       'Accept': 'application/json'
     });
 
     let params = new URLSearchParams();
-    params.append('query', 'SELECT * WHERE { <http://dbpedia.org/resource/Awolnation> ?pref ?obj } LIMIT 10');
+    params.append('query', 'SELECT * WHERE { <http://dbpedia.org/resource/Awolnation> ?pref ?obj } LIMIT 10'); //al posto di Awolnation va inserita la stringa
     params.append('format', 'json');
 
     let options: RequestOptionsArgs = {

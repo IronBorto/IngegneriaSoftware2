@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component'
 import { Header } from './header'
+import { HttpClient } from './HttpClient'
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { Header } from './header'
   ],
   declarations: [
     AppComponent,
-    Header
+    Header,
+    HttpClient
   ],
   bootstrap: [ AppComponent ]
 })

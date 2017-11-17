@@ -10,6 +10,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
 var header_1 = require("./header");
+var HttpClient_1 = require("./HttpClient");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -22,7 +23,8 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
-            header_1.Header
+            header_1.Header,
+            HttpClient_1.HttpClient
         ],
         bootstrap: [app_component_1.AppComponent]
     })

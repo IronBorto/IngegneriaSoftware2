@@ -6,16 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var app_component_1 = require("./app.component");
-var header_1 = require("./header");
-var HttpClient_1 = require("./HttpClient");
-var AppModule = (function () {
-    function AppModule() {
-    }
-    return AppModule;
-}());
+const core_1 = require("@angular/core");
+const platform_browser_1 = require("@angular/platform-browser");
+const app_component_1 = require("./app.component");
+const header_1 = require("./header");
+const HttpClient_1 = require("./HttpClient");
+let AppModule = class AppModule {
+};
 AppModule = __decorate([
     core_1.NgModule({
         imports: [

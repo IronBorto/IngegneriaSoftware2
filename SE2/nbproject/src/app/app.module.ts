@@ -1,5 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import * as $ from 'jquery';
 
 import { AppComponent } from './app.component'
 import { Header } from './header'

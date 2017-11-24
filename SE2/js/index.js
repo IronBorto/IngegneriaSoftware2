@@ -16,7 +16,7 @@ app.get('/page1', function (req, res) {
 
 //handle get req on /page2
 app.get('/page2', function (req, res) {
-    gsearch.gsearchv2();
+    gsearch.googlesearch(req.query.value);
 });
 
 

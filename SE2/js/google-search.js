@@ -15,36 +15,19 @@ const  KGSearch = require('google-kgsearch');
 class googlesearch {
   constructor() { }
 
-  gsearchv2() {
+  googlesearch(param) {
     KGSearch.kGraph = KGSearch(process.env.KGSEARCH_API_KEY = "AIzaSyAkLk07xOAE7j0SqXbMttOOXFdwAN9YikI");
-
     let params = {
-      query: 'Taylor Swift',
-      types: 'Person',
+      query: param,
       limit: 1
     }
 
     KGSearch.kGraph.search(params, (err, items) => {
       if (err) console.error(err)
-      console.log(items)
+      console.log(items[0].result.detailedDescription.url);
+      console.log(items[0].result.name);
+      console.log(items[0].result['@type']);
     })
-  }
-
-
-  googlesearch(param) {
-    param = "Cristiano Ronaldo";
-    var service_url = 'https://kgsearch.googleapis.com/v1/entities:search';
-    var params = {
-      'query': param,
-      'limit': 10,
-      'indent': true,
-      'key': 'AIzaSyAkLk07xOAE7j0SqXbMttOOXFdwAN9YikI',
-    };
-    getJSON(service_url + '?callback=?', params, function (response) {
-      console.log(response);
-    }, function (err, user) {
-      console.log('Result: ' + (err ? err.message : user.displayName));
-    });
   }
 
 }

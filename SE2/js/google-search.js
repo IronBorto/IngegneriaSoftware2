@@ -10,7 +10,7 @@ plus.people.get({
   console.log('Result: ' + (err ? err.message : user.displayName));
 });
 */
-function googlesearch(param){
+export function googlesearch(param){
     param = "Cristiano Ronaldo";
     var service_url = 'https://kgsearch.googleapis.com/v1/entities:search';
     var params = {

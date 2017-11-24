@@ -3,6 +3,8 @@ import {googlesearch} from 'google-search';
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var db = require('./dbPediaSearch');
+var gsearch = require('./google-search');
 //inspect variables
 var util = require('util');
 
@@ -11,13 +13,13 @@ var app = express();
 
 //handle get req on /page1
 app.get('/page1', function (req, res) {
-	dbpedia(req.query.value);
+	db.dbpedia(req.query.value);
 });
 
 
 //handle get req on /page2
 app.get('/page2', function (req, res) {
-    googlesearch(req.query.value);
+    gsearch.gsearchv2();
 });
 
 
@@ -32,12 +34,6 @@ app.post('/page2', function (req, res) {
     res.send('POST Page2');
     
 });
-
-
-
-
-
-
 
 //listen in a specific port
 app.listen((process.env.PORT || 80));

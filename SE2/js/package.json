@@ -6,6 +6,7 @@
   "dependencies": {
     "dbpedia-sparql-client": "^0.9.6",
     "express": "^4.16.2",
+    "google-kgsearch": "^0.1.1",
     "googleapis": "^23.0.0",
     "sparql-client": "^0.2.0"
   },

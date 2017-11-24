@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <body>
+  <form action="http://127.0.0.1:1337/page1" method='get'>
+    <input type="text" name="value" placeholder="inser your key word...">
+    <input type="submit" value="page1">
+  </form>
 
-<form action="http://127.0.0.1:1337/page1" method='get'>
-  <input type="text" name="value" placeholder="inser your key word...">
-  <input type="submit" value="page1">
-</form>
-    
-<form action="http://127.0.0.1:1337/page2" method='post'>
-  <input type="submit" value="page2">
-</form>
+  <form action="http://127.0.0.1:1337/page2" method='post'>
+    <input type="submit" value="page2">
+  </form>
 
 </body>
+
 </html>

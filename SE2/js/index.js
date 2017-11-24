@@ -8,7 +8,7 @@ var app = express();
 
 //handle get req on /page1
 app.get('/page1', function (req, res) {
-	dbpedia();
+	dbpedia(req.query.value);
 });
 
 
@@ -29,21 +29,23 @@ app.post('/page2', function (req, res) {
     res.send('POST Page2');
     
 });
-function dbpedia(){
+
+function dbpedia(param){
 	var SparqlClient = require('sparql-client');
 	var util = require('util');
 	var endpoint = 'http://dbpedia.org/sparql';
-	var query = "SELECT * FROM <http://dbpedia.org> WHERE {
-		?city <http://dbpedia.org/property/leaderName> ?leaderName
-	} LIMIT 10";
+	var query = /*"prefix dbpedia: <http://dbpedia.org/resource/>"+*/
+	"prefix dbpedia-owl: <http://dbpedia.org/ontology/>"+
+	
+	"select ?abstract ?thumbnail where { "+
+	"  <http://dbpedia.org/resource/"+ param +"> dbpedia-owl:abstract ?abstract ;"+
+							   "dbpedia-owl:thumbnail ?thumbnail ."+
+	"  filter(langMatches(lang(?abstract),\"en\"))"+
+	"}";
 	var client = new SparqlClient(endpoint);
 	console.log("Query to " + endpoint);
 	console.log("Query: " + query);
 	client.query(query)
-	  //.bind('city', 'db:Chicago') 
-	  //.bind('city', 'db:Tokyo') 
-	  //.bind('city', 'db:Casablanca') 
-	  .bind('city', '<http://dbpedia.org/resource/Vienna>')
 	  .execute(function(error, results) {
 	  process.stdout.write(util.inspect(arguments, null, 20, true)+"\n");1
 	});

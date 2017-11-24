@@ -1,8 +1,0 @@
-//forse è giusta
-{
-    "private_key_id": "1",
-    "private_key": "-----BEGIN RSA PRIVATE KEY-----\nya29.c.El_9BIn77ojtkSApHsDjeQqNI30cgObXwOmcpXJhjVETm_eL3BKqCBHz2AMPazIWON0mbiitP94Hv2p7wN-ef_IAyVUnX1OlxwYZSL-teqTcd7wK0ZMHAELJIF_BmjOPSA\n-----END RSA PRIVATE KEY-----",
-    "client_email": "rosati@wheredidiseenthisbefore.iam.gserviceaccount.com",
-    "client_id": "50f06f50367b557855fd75ef1d3815c55f109898",
-    "type": "service_account"
-}

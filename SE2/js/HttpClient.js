@@ -6,7 +6,7 @@ function detectLabels (fileName) {
     // Imports the Google Cloud client library
     const Vision = require('@google-cloud/vision')({
         projectId: 'wheredidiseenthisbefore',
-        keyFilename: '../google-service-account/keyfile.json'
+        keyFilename: '../nbproject/private/serviceAccount.json'
       });
 
     // Creates a client

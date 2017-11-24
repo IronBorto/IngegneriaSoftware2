@@ -4,7 +4,10 @@
 function detectLabels (fileName) {
     // [START vision_label_detection]
     // Imports the Google Cloud client library
-    const Vision = require('@google-cloud/vision');
+    const Vision = require('@google-cloud/vision')({
+        projectId: 'wheredidiseenthisbefore',
+        keyFilename: '../google-service-account/keyfile.json'
+      });
 
     // Creates a client
     const vision = new Vision();
@@ -30,7 +33,7 @@ function detectLabels (fileName) {
 function detectLabelsGCS (bucketName, fileName) {
     // [START vision_label_detection_gcs]
     // Imports the Google Cloud client libraries
-    const Vision = require('@google-cloud/vision');
+    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
 
     // Creates a client
     const vision = new Vision();
@@ -62,7 +65,7 @@ function detectLabelsGCS (bucketName, fileName) {
 
 function detectLandmarks (fileName) {
     // [START vision_landmark_detection]
-    const Vision = require('@google-cloud/vision');
+    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
 
     // Creates a client
     const vision = new Vision();
@@ -88,7 +91,7 @@ function detectLandmarks (fileName) {
 function detectLandmarksGCS (bucketName, fileName) {
     // [START vision_landmark_detection_gcs]
     // Imports the Google Cloud client libraries
-    const Vision = require('@google-cloud/vision');
+    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
 
     // Creates a client
     const vision = new Vision();
@@ -120,7 +123,7 @@ function detectLandmarksGCS (bucketName, fileName) {
 
 function detectProperties (fileName) {
     // [START vision_image_property_detection]
-    const Vision = require('@google-cloud/vision');
+    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
 
     // Creates a client
     const vision = new Vision();
@@ -146,7 +149,7 @@ function detectProperties (fileName) {
 function detectPropertiesGCS (bucketName, fileName) {
     // [START vision_image_property_detection_gcs]
     // Imports the Google Cloud client libraries
-    const Vision = require('@google-cloud/vision');
+    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
 
     // Creates a client
     const vision = new Vision();
@@ -180,7 +183,7 @@ function detectWeb (fileName) {
     // [START vision_web_detection]
 
     // Imports the Google Cloud client library
-    const Vision = require('@google-cloud/vision');
+    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
 
     // Creates a client
     const vision = new Vision();
@@ -229,7 +232,7 @@ function detectWebGCS (bucketName, fileName) {
     // [START vision_web_detection_gcs]
 
     // Imports the Google Cloud client libraries
-    const Vision = require('@google-cloud/vision');
+    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
 
     // Creates a client
     const vision = new Vision();

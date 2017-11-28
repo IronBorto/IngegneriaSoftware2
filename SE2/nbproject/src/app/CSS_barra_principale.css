@@ -130,10 +130,16 @@ body {
     padding-bottom: 10px;
 }
 
-.immagine_p_principale {
-    width: 75%;
-    height: 75%;
-    border-color: gray; border-style: solid;   border-width: 1px;
+#immagine_p_principale {
+    border-color: gray; 
+    border-style: solid;   
+    border-width: 1px;
     max-height: 320px;
     border-radius: 50px 50px 50px 50px; 
+    
+}
+
+#immagine_p_principale:hover {
+
+        opacity:0.6;
 }

@@ -16,7 +16,11 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="/app/CSS_barra_principale.css" type="text/css" charset="utf-8" />
         <link rel="stylesheet" href="styles.css">
-        
+        <link rel="stylesheet" href="CSS_info_immagini.css" type="text/css" charset="utf-8" />
+        <link href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
+
                     
               
 	
@@ -36,42 +40,216 @@ and open the template in the editor.
                 What are you searching?
             </div>
         </div>
-        <div class="row" style="padding-top: -200px;">
+        <div class="row">
             <div class="col-3 resize-paragrafo" align="center">
                 <div class ="blocca">
                     Place 
                 </div>
-                <a href="/app/place.html">
-                    <img src="/images/torre_eiffel.jpeg" class="immagine_p_principale" alt="place">
-                </a>
+                <div class="wrap">
+                    <img class="pic" id="immagine_p_principale" src="/images/torre_eiffel.jpeg" alt="Place" style=" width: 200px; height: 280px;">
+                    <div class="popup">
+                      we
+                    </div>
+                </div>
             </div>
             <div class="col-3 resize-paragrafo" align="center">
                 <div class ="blocca">
                     People 
                 </div>
-                <a href="/app/people.html">  
-                    <img src="/images/brad-pitt-1.jpg" class="immagine_p_principale" alt="people">
-                </a>
+                <div class="wrap">
+                    <img class="pic" id="immagine_p_principale" src="/images/brad-pitt-1.jpg" alt="People" style=" width: 200px; height: 280px;">
+                    <div class="popup">
+                      we
+                    </div>
+                </div>
             </div>
             <div class="col-3 resize-paragrafo" align="center">
                 <div class ="blocca">
                     Artwork
                 </div>
-                <a href="/app/art.html">
-                    <img src="/images/urlo-munch.jpg" class="immagine_p_principale" alt="work of art">
-                </a>
+                <div class="wrap">
+                    <img class="pic" id="immagine_p_principale" src="/images/urlo-munch.jpg" alt="Artwork" style=" width: 200px; height: 280px;">
+                    <div class="popup">
+                      we
+                    </div>
+                </div>
             </div>
             <div class="col-3 resize-paragrafo" align="center">
                 <div class ="blocca">
                     Animal 
                 </div>
-                <a href="/app/animal.html">
-                    <img src="/images/leone_1.jpg" class="immagine_p_principale" alt="animal or plant">
-                </a>
+                <div class="wrap">
+                    <img class="pic" id="immagine_p_principale" src="/images/leone_1.jpg" alt="Animal" style=" width: 200px; height: 280px;">
+                    <div class="popup">
+                      we
+                    </div>
+              </div>
             </div>
         </div>
     </div>
-    <div class ="row" align ="center" style="padding-top:20px;">
+        
+        <!-- Bottone per modal -->
+    <div style="padding-top: 20px;">
+        <center>
+        <button id="myBtn" class="ld-over">Load Image</button>
+        </center>
+    </div>
+
+<!--Modal -->
+<div id="myModal" class="modal">
+  <!-- Contenuto modal -->
+    <div class="modal-content">
+        <div class="modal-header" style="background-color:#6495ed;">
+            <span class="close">&times;</span>
+            
+            <div class="container" id="principale" >
+                
+                    
+                    Upload Image
+                    
+                    
+                
+            </div>
+               
+        </div>
+        <div class="modal-body">
+            <center>
+                <div>
+            <input type="file" accept="image/*" onchange="loadFile(event)">
+                <img id="output"/>
+                <script>
+                  var loadFile = function(event) {
+                    var output = document.getElementById('output');
+                    output.src = URL.createObjectURL(event.target.files[0]);
+                  };
+                </script>
+                </div>
+                <button>Analyse</button>
+            </center>
+                
+        </div>
+    </div> <!--fine contenuto Modal-->
+</div><!-- fine modal-->
+
+<!--vecchio script per caricamento immagini
+            <script>
+                function check_ext($tipo) {
+
+                switch ($tipo) {
+                case "image/png":
+                        return true;
+                break;
+                case "image/jpg":
+                        return true;
+                break;
+                case "image/jpeg":
+                        return true;
+                break;
+                case "image/gif":
+                        return true;
+                break;
+                default:
+                        return false;
+                break;
+                }
+
+                }
+
+                function get_ext($tipo) {
+
+                switch ($tipo) {
+                case "image/png":
+                        return ".png";
+                break;
+                case "image/jpg":
+                        return ".jpg";
+                break;
+                case "image/jpeg":
+                        return ".jpg";
+                break;
+                case "image/gif":
+                        return ".gif";
+                break;
+                default:
+                        return false;
+                break;
+                }
+
+                }
+
+                function get_error($tmp, $type, $size, $max_size) {
+
+                if (!is_uploaded_file($tmp)) {
+                echo "File caricato in modo non corretto<br />";
+                }
+                if (!check_ext($type)) {
+                echo "Estensione del file non ammesso<br />";
+                }
+                if ($size > $max_size) {
+                echo "Dimensione del file troppo grande<br />";
+                }
+                echo '<a href="/uploader/index.php">Torna all\'uploader</a>';
+                }
+
+                $tmp = $_FILES['image']['tmp_name'];
+                $type = $_FILES['image']['type'];
+                $size = $_FILES['image']['size'];
+                $max_size = 5242880; //dimensione massima in byte consentita
+                $folder = "file/"; //cartella di destinazione dell'immagine
+
+                if (is_uploaded_file($tmp) && check_ext($type) && $size <= $max_size) {
+
+                $ext = get_ext($type); //estensione dell'immagine
+                $name = time().rand(0, 999); //timestamp attuale + un numero random compreso tra 0 e 999
+                $name = $name.$ext; //aggiungo al nome appena creato l'estensione
+                $name = $folder.$name; //aggiungo il folder di destinazione
+                //esempio risultato finale: folder/timestamp657.gif
+                if (move_uploaded_file($tmp, $name)) {
+                echo 'Immagine caricata con successo, <a href="'.$name.'"/>vai all\'immagine</a> <br />';
+                echo '<a href="/uploader/index.php">Torna all\'uploader</a>';
+                } else {
+                echo "Non è stato possibile caricare l'immagine<br />";
+                echo '<a href="/uploader/index.php">Torna all\'uploader</a>';
+                }
+                } else {
+
+                get_error($tmp, $type, $size, $max_size);
+                }
+            </script>
+            -->
+           
+
+<!-- script per il modal-->
+<script> 
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+        
+
+        <div class ="row" align ="center" style="padding-top:10px;"> 
         <div class="col-8 resize-titolo mr-auto ml-auto" >
             <div>
                 Popular search:

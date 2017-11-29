@@ -19,10 +19,8 @@ and open the template in the editor.
         <link rel="stylesheet" href="CSS_info_immagini.css" type="text/css" charset="utf-8" />
         <link href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
-
-                    
-              
+        <script src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>            
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
         <script src="systemjs.config.js"></script>
         <script>
@@ -45,10 +43,10 @@ and open the template in the editor.
                 <div class ="blocca">
                     Place 
                 </div>
-                <div class="wrap">
-                    <img class="pic" id="immagine_p_principale" src="/images/torre_eiffel.jpeg" alt="Place" style=" width: 200px; height: 280px;">
-                    <div class="popup">
-                      we
+               <div class="container1">
+                    <img src="/images/torre_eiffel.jpeg" alt="Place" id="immagine_p_principale" style="height: 280px; width: 200px;">
+                    <div class="overlay">
+                      <div class="text">Hello World</div>
                     </div>
                 </div>
             </div>
@@ -56,10 +54,10 @@ and open the template in the editor.
                 <div class ="blocca">
                     People 
                 </div>
-                <div class="wrap">
-                    <img class="pic" id="immagine_p_principale" src="/images/brad-pitt-1.jpg" alt="People" style=" width: 200px; height: 280px;">
-                    <div class="popup">
-                      we
+                <div class="container1">
+                    <img src="/images/brad-pitt-1.jpg" alt="People" id="immagine_p_principale" style="height: 280px; width: 200px;">
+                    <div class="overlay">
+                      <div class="text">Hello World</div>
                     </div>
                 </div>
             </div>
@@ -67,10 +65,10 @@ and open the template in the editor.
                 <div class ="blocca">
                     Artwork
                 </div>
-                <div class="wrap">
-                    <img class="pic" id="immagine_p_principale" src="/images/urlo-munch.jpg" alt="Artwork" style=" width: 200px; height: 280px;">
-                    <div class="popup">
-                      we
+                <div class="container1">
+                    <img src="/images/urlo-munch.jpg" alt="Artwork" id="immagine_p_principale" style="height: 280px; width: 200px;">
+                    <div class="overlay">
+                      <div class="text">Hello World</div>
                     </div>
                 </div>
             </div>
@@ -78,12 +76,12 @@ and open the template in the editor.
                 <div class ="blocca">
                     Animal 
                 </div>
-                <div class="wrap">
-                    <img class="pic" id="immagine_p_principale" src="/images/leone_1.jpg" alt="Animal" style=" width: 200px; height: 280px;">
-                    <div class="popup">
-                      we
+                <div class="container1">
+                    <img src="/images/leone_1.jpg" alt="Avatar" id="immagine_p_principale" style="height: 280px; width: 200px;">
+                    <div class="overlay">
+                      <div class="text">Hello World</div>
                     </div>
-              </div>
+                </div>
             </div>
         </div>
     </div>
@@ -91,7 +89,7 @@ and open the template in the editor.
         <!-- Bottone per modal -->
     <div style="padding-top: 20px;">
         <center>
-        <button id="myBtn" class="ld-over">Load Image</button>
+        <button id="myBtn" class="ld-over transition">Load Image</button>
         </center>
     </div>
 
@@ -115,16 +113,27 @@ and open the template in the editor.
         <div class="modal-body">
             <center>
                 <div>
-            <input type="file" accept="image/*" onchange="loadFile(event)">
-                <img id="output"/>
+                    <form>
+                    <label class="input-btn" for="input-file">
+                        Choose file <input type="file" id="input-file" accept="image/*" onchange="loadFile(event)" hidden>
+                    </label>
+                    </form>
+            <!--<input type="file" accept="image/*" onchange="loadFile(event)">-->
+                  
+                <img id="output" alt="no file choosen"/>
                 <script>
                   var loadFile = function(event) {
                     var output = document.getElementById('output');
                     output.src = URL.createObjectURL(event.target.files[0]);
+                    document.getElementById("analyse").disabled = false;
+                    document.getElementById("analyse").classList.add("transition");
                   };
+                  
+                  
+                  
                 </script>
                 </div>
-                <button>Analyse</button>
+                <button id="analyse" onclick="window.location.href='app/result.html'" disabled>Analyse</button>
             </center>
                 
         </div>
@@ -233,19 +242,36 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
-}
-
+    }
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-    modal.style.display = "none";
+    exit_modal();
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+         exit_modal();
+        
+        
     }
+    
 }
+        clearInputFile = function(f) {
+            var label = document.createElement('form'), parentNode = f.parentNode, ref = f.nextSibling;
+            label.appendChild(f);
+            label.reset();
+            parentNode.insertBefore(f,ref);
+            
+        }
+        exit_modal = function() {
+            modal.style.display = "none";
+            document.getElementById('output').src = "";
+            document.getElementById("analyse").disabled = true;
+            document.getElementById("analyse").classList.remove("transition");
+            var es = document.forms[0].elements;
+            clearInputFile(es[0]);
+        }
 </script>
         
 

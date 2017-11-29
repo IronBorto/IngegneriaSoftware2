@@ -1,6 +1,3 @@
-import {dbpedia} from 'dbpedia-search';
-import {googlesearch} from 'google-search';
-
 var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('./dbPediaSearch');

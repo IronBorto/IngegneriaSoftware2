@@ -1,17 +1,64 @@
 'use strict';
 
+const Vision = require('@google-cloud/vision')({
+    projectId: 'wheredidiseenthisbefore',
+    keyFilename: '../nbproject/private/serviceAccount.json'
+  });
+let vision;
+
+  
+function googleAPIVision (filename) {
+    
+    vision = new Vision();
+    const labels = detectLabels(filename);
+    const webs = detectWeb(filename);
+    if (labels != err && web != err){
+        var landmarkB = false;
+        var c = 0;
+        labels.forEach((label) => {
+            c++;
+            if(label == "landmark")
+                landmarkB = true;
+            else{
+                if (c <= 5){
+                    // Tieni buoni quei valori per analisi
+                }
+
+            }
+        });
+        if (landmarkB == true){
+            const landmark = detectLandmarks(filename).first;
+            // Utilizza il landmark per ottenere nome e coordinate -->
+            /*
+            "locations": [
+                {
+                "latLng": {
+                    "latitude": 45.464239,
+                    "longitude": 9.190171
+                }
+                }
+            ]
+            */
+        }
+        var w = 0;
+        webs.forEach((web) => {
+            w++;
+            if (w <= 5){
+                //Tieni buoni quei valori per analisi
+            }
+            else
+                return 0;
+        });
+    }
+}
 
 function detectLabels (fileName) {
     // [START vision_label_detection]
     // Imports the Google Cloud client library
-    const Vision = require('@google-cloud/vision')({
-        projectId: 'wheredidiseenthisbefore',
-        keyFilename: '../nbproject/private/serviceAccount.json'
-      });
+    
 
     // Creates a client
-    const vision = new Vision();
-
+    
     /**
      * TODO(developer): Uncomment the following line before running the sample.
      */
@@ -23,6 +70,7 @@ function detectLabels (fileName) {
         const labels = results[0].labelAnnotations;
     console.log('Labels:');
     labels.forEach((label) => console.log(label));
+    return labels;
 })
 .catch((err) => {
         console.error('ERROR:', err);
@@ -65,11 +113,9 @@ function detectLabelsGCS (bucketName, fileName) {
 
 function detectLandmarks (fileName) {
     // [START vision_landmark_detection]
-    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
-
+    
     // Creates a client
-    const vision = new Vision();
-
+    
     /**
      * TODO(developer): Uncomment the following line before running the sample.
      */
@@ -121,72 +167,13 @@ function detectLandmarksGCS (bucketName, fileName) {
     // [END vision_landmark_detection_gcs]
 }
 
-function detectProperties (fileName) {
-    // [START vision_image_property_detection]
-    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
-
-    // Creates a client
-    const vision = new Vision();
-
-    /**
-     * TODO(developer): Uncomment the following line before running the sample.
-     */
-    // const fileName = 'Local image file, e.g. /path/to/image.png';
-
-    // Performs property detection on the local file
-    vision.imageProperties({ source: { filename: fileName } })
-        .then((results) => {
-        const properties = results[0].imagePropertiesAnnotation;
-    const colors = properties.dominantColors.colors;
-    colors.forEach((color) => console.log(color));
-})
-.catch((err) => {
-        console.error('ERROR:', err);
-});
-    // [END vision_image_property_detection]
-}
-
-function detectPropertiesGCS (bucketName, fileName) {
-    // [START vision_image_property_detection_gcs]
-    // Imports the Google Cloud client libraries
-    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
-
-    // Creates a client
-    const vision = new Vision();
-
-    /**
-     * TODO(developer): Uncomment the following lines before running the sample.
-     */
-        // const bucketName = 'Bucket where the file resides, e.g. my-bucket';
-        // const fileName = 'Path to file within bucket, e.g. path/to/image.png';
-
-    const request = {
-            source: {
-                imageUri: `gs://${bucketName}/${fileName}`
-            }
-        };
-
-    // Performs property detection on the gcs file
-    vision.imageProperties(request)
-        .then((results) => {
-        const properties = results[0].imagePropertiesAnnotation;
-    const colors = properties.dominantColors.colors;
-    colors.forEach((color) => console.log(color));
-})
-.catch((err) => {
-        console.error('ERROR:', err);
-});
-    // [END vision_image_property_detection_gcs]
-}
 
 function detectWeb (fileName) {
     // [START vision_web_detection]
 
     // Imports the Google Cloud client library
-    const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
-
+    
     // Creates a client
-    const vision = new Vision();
 
     /**
      * TODO(developer): Uncomment the following line before running the sample.

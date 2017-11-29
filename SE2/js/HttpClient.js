@@ -2,7 +2,7 @@
 
 const Vision = require('@google-cloud/vision')({
     projectId: 'wheredidiseenthisbefore',
-    keyFilename: '../nbproject/private/serviceAccount.json'
+    keyFilename: '../private/serviceAccount.json'
   });
 let vision;
 

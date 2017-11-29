@@ -1,3 +1,4 @@
+/* obsoleta */
 export function dbpedia(param){
 	var SparqlClient = require('sparql-client');
 	var util = require('util');

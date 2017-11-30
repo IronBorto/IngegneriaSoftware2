@@ -50,6 +50,8 @@ function googleAPIVision (filename) {
                 return 0;
         });
     }
+    else
+        return 0;
 }
 
 function detectLabels (fileName) {

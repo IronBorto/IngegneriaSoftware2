@@ -9,7 +9,7 @@ and open the template in the editor.
     
 <html>
     <head>
-        <title>Intestazione</title>
+        <title>HomePage</title>
         <meta charset="UTF-8">
         <base href="/">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,9 +30,10 @@ and open the template in the editor.
     </head>
     <body>
             <iframe src="app/header.html" width="100%" frameborder="0"></iframe>
-        <my-app>Caricamento in corso...</my-app>
+        
 
-    <div class="container" id="principale" style="padding-top:30px;">
+        <!-- immagini con informazioni -->
+    <div class="container" id="principale">
         <div class="row">
             <div align="center" class ="resize-titolo col-12">
                 What are you searching?
@@ -44,7 +45,7 @@ and open the template in the editor.
                     Place 
                 </div>
                <div class="container1">
-                    <img src="/images/torre_eiffel.jpeg" alt="Place" id="immagine_p_principale" style="height: 280px; width: 200px;">
+                    <img src="/images/torre_eiffel.jpeg" alt="Place" id="immagine_p_principale" style="height: 11.5em; width: 8em;">
                     <div class="overlay">
                       <div class="text">Hello World</div>
                     </div>
@@ -55,7 +56,7 @@ and open the template in the editor.
                     People 
                 </div>
                 <div class="container1">
-                    <img src="/images/brad-pitt-1.jpg" alt="People" id="immagine_p_principale" style="height: 280px; width: 200px;">
+                    <img src="/images/brad-pitt-1.jpg" alt="People" id="immagine_p_principale" style="height: 11.5em; width: 8em;">
                     <div class="overlay">
                       <div class="text">Hello World</div>
                     </div>
@@ -66,7 +67,7 @@ and open the template in the editor.
                     Artwork
                 </div>
                 <div class="container1">
-                    <img src="/images/urlo-munch.jpg" alt="Artwork" id="immagine_p_principale" style="height: 280px; width: 200px;">
+                    <img src="/images/urlo-munch.jpg" alt="Artwork" id="immagine_p_principale" style="height: 11.5em; width: 8em;">
                     <div class="overlay">
                       <div class="text">Hello World</div>
                     </div>
@@ -77,9 +78,9 @@ and open the template in the editor.
                     Animal 
                 </div>
                 <div class="container1">
-                    <img src="/images/leone_1.jpg" alt="Avatar" id="immagine_p_principale" style="height: 280px; width: 200px;">
-                    <div class="overlay">
-                      <div class="text">Hello World</div>
+                    <img src="/images/leone_1.jpg" alt="Avatar" id="immagine_p_principale" style="height: 11.5em; width: 8em;">
+                    <div class="overlay resize-paragrafo">
+                      <div class="text ">Hello World</div>
                     </div>
                 </div>
             </div>
@@ -99,28 +100,18 @@ and open the template in the editor.
     <div class="modal-content">
         <div class="modal-header" style="background-color:#6495ed;">
             <span class="close">&times;</span>
-            
-            <div class="container" id="principale" >
-                
-                    
-                    Upload Image
-                    
-                    
-                
-            </div>
-               
+            <div class="container" id="principale" >Upload Image</div>  
         </div>
         <div class="modal-body">
             <center>
                 <div>
                     <form>
                     <label class="input-btn" for="input-file">
-                        Choose file <input type="file" id="input-file" accept="image/*" onchange="loadFile(event)" hidden>
+                        Chose file <input type="file" id="input-file" accept="image/*" onchange="loadFile(event)" hidden>
                     </label>
                     </form>
-            <!--<input type="file" accept="image/*" onchange="loadFile(event)">-->
-                  
-                <img id="output" alt="no file choosen"/>
+                <img id="output" alt="no file chosen"/>
+                <!-- script per preview immagini e gestione tasto Analyse-->
                 <script>
                   var loadFile = function(event) {
                     var output = document.getElementById('output');
@@ -229,34 +220,35 @@ and open the template in the editor.
            
 
 <!-- script per il modal-->
-<script> 
-// Get the modal
-var modal = document.getElementById('myModal');
+        <script> 
+        // Get the modal
+        var modal = document.getElementById('myModal');
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-    }
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    exit_modal();
-}
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+            }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            exit_modal();
+        }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-         exit_modal();
-        
-        
-    }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                 exit_modal();
+
+
+            }
     
 }
+        //funzione per togliere file in input all'uscita dal modal
         clearInputFile = function(f) {
             var label = document.createElement('form'), parentNode = f.parentNode, ref = f.nextSibling;
             label.appendChild(f);
@@ -264,6 +256,7 @@ window.onclick = function(event) {
             parentNode.insertBefore(f,ref);
             
         }
+        //funzione che gestisce i tasti all'uscita dal modal e richiama clearInputFile() 
         exit_modal = function() {
             modal.style.display = "none";
             document.getElementById('output').src = "";
@@ -272,9 +265,9 @@ window.onclick = function(event) {
             var es = document.forms[0].elements;
             clearInputFile(es[0]);
         }
-</script>
+        </script>
         
-
+        <!--parte ricerca popolare-->
         <div class ="row" align ="center" style="padding-top:10px;"> 
         <div class="col-8 resize-titolo mr-auto ml-auto" >
             <div>
@@ -288,7 +281,6 @@ window.onclick = function(event) {
                 <div class="SlideShow">
                     <span align ="center">Brad Pitt</span>
                     <img src="images/slideshow.jpg" style="width:100%; border-radius: 50px 50px 50px 50px; border-color: gray; border-style: solid;   border-width: 1px;">
-                    
                 </div>
             </div>
             <script type="text/javascript" src="/app/SlideShow.js"></script>

@@ -14,7 +14,8 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="/app/CSS_barra_principale.css" type="text/css" charset="utf-8" />
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="CSS_risultati.css">
+        
         <head>
             <title>Intestazione</title>
             <meta charset="UTF-8">
@@ -26,17 +27,96 @@ and open the template in the editor.
     <br>
     <br>
     <div class="container">
-        <div class="row">
+        <div>
+            <h1>Lion</h1>
+        </div>
+        <div class="container">
+            <div class="thumbex">
+              <div class="thumbnail"><a href="#"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lion_d%27Afrique.jpg/280px-Lion_d%27Afrique.jpg"/><span>Leone</span></a></div>
+            </div>
+            <div class="thumbex">    
+              <div class="thumbnail"><a href="#"><img src="http://clubofmozambique.com/wp-content/uploads/2017/09/lionlion.jpg"/><span>Leone</span></a></div>
+            </div>
+            <div class="thumbex">
+              <div class="thumbnail"><a href="#"><img src="https://images.wired.it/wp-content/uploads/2015/07/1438336460_leone-em-600x335.jpg" /><span>Leone</span></a></div>
+            </div>
+          </div>
+          <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+   
+            
+		<div class="tab_container">
+			<input id="tab1" type="radio" name="tabs" checked>
+			<label for="tab1"><i class="fa fa-code"></i><span>Code</span></label>
+
+			<input id="tab2" type="radio" name="tabs">
+			<label for="tab2"><i class="fa fa-pencil-square-o"></i><span>About</span></label>
+
+			<input id="tab3" type="radio" name="tabs">
+			<label for="tab3"><i class="fa fa-bar-chart-o"></i><span>Services</span></label>
+
+			<input id="tab4" type="radio" name="tabs">
+			<label for="tab4"><i class="fa fa-folder-open-o"></i><span>Portfolio</span></label>
+
+			<input id="tab5" type="radio" name="tabs">
+			<label for="tab5"><i class="fa fa-envelope-o"></i><span>Contact</span></label>
+
+			<section id="content1" class="tab-content">
+				<h3>Headline 1</h3>
+		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		      	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		      	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		      	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		      	
+			</section>
+
+			<section id="content2" class="tab-content">
+				<h3>Headline 2</h3>
+		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+		      
+			</section>
+
+			<section id="content3" class="tab-content">
+				<h3>Headline 3</h3>
+		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		      	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		      	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		      	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		    
+			</section>
+
+			<section id="content4" class="tab-content">
+				<h3>Headline 4</h3>
+		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		      	tempor incididunt ut labore et dolore magna aliqua.</p>
+		      	
+			</section>
+
+			<section id="content5" class="tab-content">
+				<h3>Headline 5</h3>
+		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+		      	
+			</section>
+		</div>
+        <!--<div class="row">
             <div class="col-3">
-                <img src="https://i.pinimg.com/736x/78/b4/f8/78b4f865a46a2a4cdce4a621da87d538--lions-tattoo-tatoo.jpg" id="immagine_risultati" alt="Lion"> 
+                <img src="https://i.pinimg.com/736x/78/b4/f8/78b4f865a46a2a4cdce4a621da87d538--lions-tattoo-tatoo.jpg" id="immagine_risultati" alt="Lion" > 
             </div>
             <div class="col-9">
-                <h1>Lion</h1>
-                <h5>Nome scientifico: Panthera leo</h5>
-                <h5>Longevità: 10 - 14 anni</h5>
-                <h5>Velocità: 80km/h </h5>
+                <div class="resize-paragrafo">Lion</div>
+                <div class="resize-paragrafo">Nome scientifico: Panthera leo</div>
+                <div class="resize-paragrafo">Longevità: 10 - 14 anni</div>
+                <div class="resize-paragrafo">Velocità: 80km/h </div>
                 Il leone è un mammifero carnivoro della famiglia dei felidi. Dopo la tigre, è il più grande dei cinque grandi felidi del genere Panthera con alcuni maschi la cui massa corporea supera i 250 kg.
             </div>
           
-        </div>
+        </div>-->
     </div>

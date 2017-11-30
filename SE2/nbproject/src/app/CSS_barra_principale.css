@@ -143,17 +143,3 @@ body {
 
         opacity:0.8;
 }
-
-#immagine_risultati {
-    border-color: gray; 
-    border-style: solid;   
-    border-width: 1px;
-    border-radius: 50px 50px 50px 50px;
-   
-    
-}
-
-#immagine_risultati:hover {
-
-        opacity:0.6;
-}

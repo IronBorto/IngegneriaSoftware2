@@ -80,6 +80,7 @@ function detectLabels (fileName) {
     // [END vision_label_detection]
 }
 
+/* Funzione che potrebbe essere utile in futuri sviluppi
 function detectLabelsGCS (bucketName, fileName) {
     // [START vision_label_detection_gcs]
     // Imports the Google Cloud client libraries
@@ -88,9 +89,9 @@ function detectLabelsGCS (bucketName, fileName) {
     // Creates a client
     const vision = new Vision();
 
-    /**
-     * TODO(developer): Uncomment the following lines before running the sample.
-     */
+    
+     // TODO(developer): Uncomment the following lines before running the sample.
+     
         // const bucketName = 'Bucket where the file resides, e.g. my-bucket';
         // const fileName = 'Path to file within bucket, e.g. path/to/image.png';
 
@@ -111,7 +112,7 @@ function detectLabelsGCS (bucketName, fileName) {
         console.error('ERROR:', err);
 });
     // [END vision_label_detection_gcs]
-}
+}*/
 
 function detectLandmarks (fileName) {
     // [START vision_landmark_detection]
@@ -135,7 +136,7 @@ function detectLandmarks (fileName) {
 });
     // [END vision_landmark_detection]
 }
-
+/* Funzione che potrebbe essere utile in futuri sviluppi
 function detectLandmarksGCS (bucketName, fileName) {
     // [START vision_landmark_detection_gcs]
     // Imports the Google Cloud client libraries
@@ -144,9 +145,9 @@ function detectLandmarksGCS (bucketName, fileName) {
     // Creates a client
     const vision = new Vision();
 
-    /**
-     * TODO(developer): Uncomment the following lines before running the sample.
-     */
+    
+     // TODO(developer): Uncomment the following lines before running the sample.
+     
         // const bucketName = 'Bucket where the file resides, e.g. my-bucket';
         // const fileName = 'Path to file within bucket, e.g. path/to/image.png';
 
@@ -167,7 +168,7 @@ function detectLandmarksGCS (bucketName, fileName) {
         console.error('ERROR:', err);
 });
     // [END vision_landmark_detection_gcs]
-}
+}*/
 
 
 function detectWeb (fileName) {
@@ -217,6 +218,7 @@ function detectWeb (fileName) {
     // [END vision_web_detection]
 }
 
+/* Funzione che potrebbe essere utile in futuri sviluppi
 function detectWebGCS (bucketName, fileName) {
     // [START vision_web_detection_gcs]
 
@@ -226,9 +228,9 @@ function detectWebGCS (bucketName, fileName) {
     // Creates a client
     const vision = new Vision();
 
-    /**
-     * TODO(developer): Uncomment the following lines before running the sample.
-     */
+    
+     // TODO(developer): Uncomment the following lines before running the sample.
+     
         // const bucketName = 'Bucket where the file resides, e.g. my-bucket';
         // const fileName = 'Path to file within bucket, e.g. path/to/image.png';
 
@@ -271,7 +273,7 @@ function detectWebGCS (bucketName, fileName) {
         console.error('ERROR:', err);
 });
     // [END vision_web_detection_gcs]
-}
+}*/
 
 
 /*

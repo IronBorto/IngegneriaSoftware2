@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('./dbPediaSearch');
 var gsearch = require('./google-search');
+var gvision = require('./HttpClient');
 var util = require('util');
 var fs = require('fs');
 var util = require('util');
@@ -21,6 +22,7 @@ app.get('/page1', function (req, res) {
 //handle get req on /page2
 app.get('/page2', function (req, res) {
     gsearch.googlesearch(req.query.value);
+    gvision.googleAPIVision("../public_html/Immagini/emma-film.PNG");
 });
 
 
@@ -46,7 +48,7 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
 
 
 //listen in a specific port
-app.listen((process.env.PORT || 80));
+app.listen((process.env.PORT || 8080));
 
 //check status
-console.log('Server running at http://localhost:80/');
+console.log('Server running at http://localhost:8080/');

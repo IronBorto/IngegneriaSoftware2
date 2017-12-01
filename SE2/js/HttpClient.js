@@ -16,11 +16,7 @@ class HttpClient {
     constructor() {
         
     }
-    
-    
-      
-    
-    
+
     detectLabels (fileName) {
         // [START vision_label_detection]
         // Imports the Google Cloud client library
@@ -245,9 +241,9 @@ class HttpClient {
     googleAPIVision (filename) {
         
         vision = new visions.ImageAnnotatorClient();
-        const labels = detectLabels(filename);
-        const webs = detectWeb(filename);
-        if (labels != err && web != err){
+        const labels = this.detectLabels(filename);
+        const webs = this.detectWeb(filename);
+        if (labels != "err" && webs != "err"){
             var landmarkB = false;
             var c = 0;
             labels.forEach((label) => {
@@ -262,7 +258,7 @@ class HttpClient {
                 }
             });
             if (landmarkB == true){
-                const landmark = detectLandmarks(filename).first;
+                const landmark = this.detectLandmarks(filename).first;
                 // Utilizza il landmark per ottenere nome e coordinate -->
                 /*
                 "locations": [

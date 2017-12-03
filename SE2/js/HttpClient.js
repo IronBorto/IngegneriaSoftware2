@@ -43,15 +43,11 @@ class HttpClient {
         // [END vision_label_detection]
     }
     
-    /* Funzione che potrebbe essere utile in futuri sviluppi
-    function detectLabelsGCS (bucketName, fileName) {
+    // Funzione che potrebbe essere utile in futuri sviluppi
+    detectLabelsGCS (bucketName, fileName) {
         // [START vision_label_detection_gcs]
-        // Imports the Google Cloud client libraries
-        const Vision = require('@google-cloud/vision')({         projectId: 'wheredidiseenthisbefore',         keyFilename: '../google-service-account/keyfile.json'       });
-    
-        // Creates a client
-        const vision = new Vision();
-    
+        bucketName = "wheredidiseenthisbefore";
+        fileName = "4ae272556c966a44ca8e14d0d489177c";
         
          // TODO(developer): Uncomment the following lines before running the sample.
          
@@ -73,9 +69,10 @@ class HttpClient {
     })
     .catch((err) => {
             console.error('ERROR:', err);
+            return "err";
     });
         // [END vision_label_detection_gcs]
-    }*/
+    }
     
     detectLandmarks (fileName) {
         // [START vision_landmark_detection]
@@ -241,7 +238,7 @@ class HttpClient {
     googleAPIVision (filename) {
         
         vision = new visions.ImageAnnotatorClient();
-        const labels = this.detectLabels(filename);
+        const labels = this.detectLabelsGCS("a2", filename);
         const webs = this.detectWeb(filename);
         if (labels != "err" && webs != "err"){
             var landmarkB = false;

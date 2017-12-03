@@ -14,15 +14,7 @@ const bucketName = 'wheredidiseenthisbefore';
 class googleCStorage {
 
     constructor() {
-        // Creates the new bucket
-        storage
-            .createBucket(bucketName)
-            .then(() => {
-                console.log(`Bucket ${bucketName} created.`);
-            })
-            .catch(err => {
-                console.error('ERROR:', err);
-            });
+        
     }
 
     upload(filename) {

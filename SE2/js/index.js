@@ -42,8 +42,10 @@ app.post('/page2', function (req, res) {
 
 app.post('/upload', upload.single('image'), function (req, res, next) {
     console.log('Sono in upload ' + req.file.path);
-    gs.upload(req.file.path);
-    gvision.googleAPIVision(req.file.path);
+    var imageFile = fs.readFileSync(req.file.path);
+    var encoded = new Buffer(imageFile).toString('base64');
+    //gs.upload(req.file.path);
+    gvision.googleAPIVision(encoded);
     fs.unlinkSync(req.file.path);
     console.log('fine e cancellazione');
 });
@@ -51,7 +53,7 @@ app.post('/upload', upload.single('image'), function (req, res, next) {
 
 
 //listen in a specific port
-app.listen((process.env.PORT || 80));
+app.listen((process.env.PORT || 8088));
 
 //check status
 console.log('Server running at http://localhost:8080/');

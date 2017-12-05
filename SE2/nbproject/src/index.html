@@ -16,6 +16,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="/app/CSS_barra_principale.css" type="text/css" charset="utf-8" />
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="app/Modal.css">
         <link rel="stylesheet" href="CSS_info_immagini.css" type="text/css" charset="utf-8" />
         <link href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -97,10 +98,12 @@ and open the template in the editor.
 <!--Modal -->
 <div id="myModal" class="modal">
   <!-- Contenuto modal -->
-    <div class="modal-content">
-        <div class="modal-header" style="background-color:#6495ed;">
+    <div class="modal-content" style="border-radius: 50px 50px 50px 50px;">
+        <div class="modal-header" style="background-color:#6495ed; border-radius: 50px 50px 50px 50px; border: 1px solid black;">
             <span class="close">&times;</span>
-            <div class="container" id="principale" >Upload Image</div>  
+            
+            <div class="container resize-paragrafo" style="text-align: center;">Upload Image</div>  
+            
         </div>
         <div class="modal-body">
             <center>
@@ -124,100 +127,11 @@ and open the template in the editor.
                   
                 </script>
                 </div>
-                <button id="analyse" onclick="window.location.href='app/result.html'" disabled>Analyse</button>
+                <button id="analyse"  onclick="window.location.href='app/result.html'" disabled>Analyse</button>
             </center>
-                
         </div>
     </div> <!--fine contenuto Modal-->
 </div><!-- fine modal-->
-
-<!--vecchio script per caricamento immagini
-            <script>
-                function check_ext($tipo) {
-
-                switch ($tipo) {
-                case "image/png":
-                        return true;
-                break;
-                case "image/jpg":
-                        return true;
-                break;
-                case "image/jpeg":
-                        return true;
-                break;
-                case "image/gif":
-                        return true;
-                break;
-                default:
-                        return false;
-                break;
-                }
-
-                }
-
-                function get_ext($tipo) {
-
-                switch ($tipo) {
-                case "image/png":
-                        return ".png";
-                break;
-                case "image/jpg":
-                        return ".jpg";
-                break;
-                case "image/jpeg":
-                        return ".jpg";
-                break;
-                case "image/gif":
-                        return ".gif";
-                break;
-                default:
-                        return false;
-                break;
-                }
-
-                }
-
-                function get_error($tmp, $type, $size, $max_size) {
-
-                if (!is_uploaded_file($tmp)) {
-                echo "File caricato in modo non corretto<br />";
-                }
-                if (!check_ext($type)) {
-                echo "Estensione del file non ammesso<br />";
-                }
-                if ($size > $max_size) {
-                echo "Dimensione del file troppo grande<br />";
-                }
-                echo '<a href="/uploader/index.php">Torna all\'uploader</a>';
-                }
-
-                $tmp = $_FILES['image']['tmp_name'];
-                $type = $_FILES['image']['type'];
-                $size = $_FILES['image']['size'];
-                $max_size = 5242880; //dimensione massima in byte consentita
-                $folder = "file/"; //cartella di destinazione dell'immagine
-
-                if (is_uploaded_file($tmp) && check_ext($type) && $size <= $max_size) {
-
-                $ext = get_ext($type); //estensione dell'immagine
-                $name = time().rand(0, 999); //timestamp attuale + un numero random compreso tra 0 e 999
-                $name = $name.$ext; //aggiungo al nome appena creato l'estensione
-                $name = $folder.$name; //aggiungo il folder di destinazione
-                //esempio risultato finale: folder/timestamp657.gif
-                if (move_uploaded_file($tmp, $name)) {
-                echo 'Immagine caricata con successo, <a href="'.$name.'"/>vai all\'immagine</a> <br />';
-                echo '<a href="/uploader/index.php">Torna all\'uploader</a>';
-                } else {
-                echo "Non è stato possibile caricare l'immagine<br />";
-                echo '<a href="/uploader/index.php">Torna all\'uploader</a>';
-                }
-                } else {
-
-                get_error($tmp, $type, $size, $max_size);
-                }
-            </script>
-            -->
-           
 
 <!-- script per il modal-->
         <script> 
@@ -275,12 +189,16 @@ and open the template in the editor.
             </div>
             <div class="resize-paragrafo" style="width:100%; padding-top:20px;">
                 <div class="SlideShow">
+                    <div>
                     <span align ="center">Basilica of St. John Lateran</span>
-                    <img src="images/slideshow2.jpg" style="width:100%; border-radius: 50px 50px 50px 50px; border-color: gray; border-style: solid;   border-width: 1px;">
+                    </div>
+                    <img src="images/slideshow2.jpg" class="popolar">
                 </div>
                 <div class="SlideShow">
+                    <div>
                     <span align ="center">Brad Pitt</span>
-                    <img src="images/slideshow.jpg" style="width:100%; border-radius: 50px 50px 50px 50px; border-color: gray; border-style: solid;   border-width: 1px;">
+                    </div>
+                    <img src="images/slideshow.jpg" class="popolar">
                 </div>
             </div>
             <script type="text/javascript" src="/app/SlideShow.js"></script>

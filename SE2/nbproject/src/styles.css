@@ -108,6 +108,8 @@ nav a.active {
 button:disabled {
     opacity: 0.6;
     transition-property: none !important;
+    color: grey;
+    border-color: grey;
     
    
 }
@@ -222,3 +224,18 @@ button:after {
 #img-upload{
     width: 100%;
 }
+
+.popolar {
+    width:75%; 
+    border-radius: 50px 50px 50px 50px; 
+    border-color: gray; 
+    border-style: solid;   
+    border-width: 1px;
+    transition: all .2s ease;
+}
+
+.popolar:hover {
+    transition: all .2s ease;
+    width:100%;
+}
+

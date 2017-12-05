@@ -311,3 +311,7 @@ label .fa {
 .container .thumbex .thumbnail:hover span {
   opacity: 0;
 }
+
+#nascosto {
+    display: none;
+}

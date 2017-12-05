@@ -235,6 +235,21 @@ class HttpClient {
         // [END vision_web_detection_gcs]
     }*/
 
+    elaborate (labels, latitude, longitude, web) {
+        if (latitude != 0 && longitude != 0) {
+            //Visualizza su sito
+            console.log(latitude);
+            console.log(longitude);
+        }
+        labels.forEach ( (lab) => {
+            //Aggiungi Label su sito
+        });
+        web.forEach ((w) => {
+            //Ricerca w su google-search.js
+        });
+    }
+
+
     googleAPIVision (filename) {
         
         vision = new visions.ImageAnnotatorClient();
@@ -243,19 +258,27 @@ class HttpClient {
         if (labels != "err" && webs != "err"){
             var landmarkB = false;
             var c = 0;
-            labels.forEach((label) => {
+            var lab = new Array();
+            var web = new Array();
+            labels.labelAnnotations.forEach((label) => {
                 c++;
                 if(label == "landmark")
                     landmarkB = true;
                 else{
-                    if (c <= 5){
-                        // Tieni buoni quei valori per analisi
+                    if (lab.score >= 1){
+                        lab[c] = label.description;
+                        //Tieni buoni quei valori per analisi
                     }
-    
+                    else
+                        break;    
                 }
             });
+            var lat = 0;
+            var long = 0;
             if (landmarkB == true){
                 const landmark = this.detectLandmarks(filename).first;
+                lat = landmark.landmarkAnnotations.location.latLng.latitude;
+                long = landmark.landmarkAnnotations.location.latLng.longitude;
                 // Utilizza il landmark per ottenere nome e coordinate -->
                 /*
                 "locations": [
@@ -269,14 +292,16 @@ class HttpClient {
                 */
             }
             var w = 0;
-            webs.forEach((web) => {
+            webs.webDetection.webEntities.forEach((webr) => {
                 w++;
-                if (w <= 5){
+                if (webr.score >= 0.8){
+                    web[w] = webr.description;
                     //Tieni buoni quei valori per analisi
                 }
                 else
-                    return 0;
+                    break;
             });
+            this.elaborate(lab, lat, long, web);
         }
         else
             return 0;

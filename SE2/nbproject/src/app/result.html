@@ -19,7 +19,18 @@ and open the template in the editor.
         <head>
             <title>Intestazione</title>
             <meta charset="UTF-8">
-           
+			<script type="text/javascript">
+				function nasc(){
+					var na = document.getElementsByClassName('people');
+					for(i = 0; i<na.length; i++) {
+						na[i].style.display = 'inline';
+                                            }
+                                            na[0].id='tab2';
+                                            na[2].id='tab3';
+                                                
+				}
+				window.onload = nasc;
+			</script>
         </head>
         <body>
             <iframe src="header.html" width="100%" frameborder="0"></iframe>
@@ -47,19 +58,31 @@ and open the template in the editor.
             
 		<div class="tab_container">
 			<input id="tab1" type="radio" name="tabs" checked>
-			<label for="tab1"><i class="fa fa-code"></i><span>Code</span></label>
+			<label for="tab1"><i class="fa fa-code"></i><span>Desciption</span></label>
 
-			<input id="tab2" type="radio" name="tabs">
-			<label for="tab2"><i class="fa fa-pencil-square-o"></i><span>About</span></label>
+			<input type="radio" name="tabs" class="people" hidden>
+			<label for="tab2" class="people" id="nascosto"><i class="fa fa-pencil-square-o"></i><span>Career</span></label>
 
-			<input id="tab3" type="radio" name="tabs">
-			<label for="tab3"><i class="fa fa-bar-chart-o"></i><span>Services</span></label>
+			<input type="radio" name="tabs" class="people" hidden>
+			<label for="tab3" class="people" id="nascosto"><i class="fa fa-pencil-square-o"></i><span>Award</span></label>
 
-			<input id="tab4" type="radio" name="tabs">
-			<label for="tab4"><i class="fa fa-folder-open-o"></i><span>Portfolio</span></label>
+			<input type="radio" name="tabs" class="animal" hidden>
+			<label for="tab2" class="animal" id="nascosto"><i class="fa fa-bar-chart-o"></i><span>Physical Description</span></label>
 
-			<input id="tab5" type="radio" name="tabs">
-			<label for="tab5"><i class="fa fa-envelope-o"></i><span>Contact</span></label>
+			<input type="radio" name="tabs" class="animal" hidden>
+			<label for="tab3" class="animal" id="nascosto"><i class="fa fa-bar-chart-o"></i><span>Distribution</span></label>
+
+			<input type="radio" name="tabs" class="place" hidden>
+			<label for="tab2" class="place" id="nascosto"><i class="fa fa-folder-open-o"></i><span>Map</span></label>
+
+			<input type="radio" name="tabs" class="place" hidden>
+			<label for="tab3" class="place" id="nascosto"><i class="fa fa-folder-open-o"></i><span>External Link</span></label>
+
+			<input type="radio" name="tabs" class="art" hidden>
+			<label for="tab2" class="art" id="nascosto"><i class="fa fa-envelope-o"></i><span>Author</span></label>
+
+			<input type="radio" name="tabs" class="art" hidden>
+			<label for="tab3" class="art" id="nascosto"><i class="fa fa-envelope-o"></i><span>Map</span></label>
 
 			<section id="content1" class="tab-content">
 				<h3>Headline 1</h3>
@@ -105,6 +128,7 @@ and open the template in the editor.
 		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
 		      	
 			</section>
+
 		</div>
         <!--<div class="row">
             <div class="col-3">

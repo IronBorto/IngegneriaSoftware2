@@ -1,16 +1,9 @@
 'use strict';
 
-const visions = require('@google-cloud/vision')/*({
-    projectId: 'wheredidiseenthisbefore',
-    keyFilename: '../private/serviceAccount.json'
-  })*/;
+const visions = require('@google-cloud/vision');
 var vision;
 var gsearch = require('./google-search');
 
-/* FORSE BISOGNA FARE COSI'
-export GOOGLE_APPLICATION_CREDENTIALS=../private/serviceAccount.json
-export GCLOUD_PROJECT=wheredidiseenthisbefore
-*/
 
 class HttpClient {
 

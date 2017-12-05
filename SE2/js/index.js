@@ -40,20 +40,23 @@ app.post('/page2', function (req, res) {
 });
 
 
-app.post('/upload', upload.single('image'), function (req, res, next) {
+
+
+app.post('/upload', upload.single('image'), async function (req, res, next) {
     console.log('Sono in upload ' + req.file.path);
     var imageFile = fs.readFileSync(req.file.path);
     var encoded = new Buffer(imageFile).toString('base64');
     //gs.upload(req.file.path);
-    gvision.googleAPIVision(encoded);
-    fs.unlinkSync(req.file.path);
-    console.log('fine e cancellazione');
+    var json = gvision.googleAPIVision(encoded);
+    console.log(json);
+    res.json({value: json});
+    console.log('Finito');
+    //res.send(); inserire il percorso della pagina ../public_html/Pagine/[NomePagina]
+    //Dovrebbe arrivare un json nella pagina indicata e si può ottenere il risultato cercando il campo value
 });
 
-
-
 //listen in a specific port
-app.listen((process.env.PORT || 8084));
+app.listen((process.env.PORT || 8083));
 
 //check status
-console.log('Server running at http://localhost:8084/');
+console.log('Server running at http://localhost:8083/');

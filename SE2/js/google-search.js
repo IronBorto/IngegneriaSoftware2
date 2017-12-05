@@ -16,7 +16,7 @@ const dbPedia = require('./dbPediaSearch');
 class googlesearch {
   constructor() { }
 
-  googlesearch(param) {
+  async googlesearch(param) {
     KGSearch.kGraph = KGSearch(process.env.KGSEARCH_API_KEY = "AIzaSyAkLk07xOAE7j0SqXbMttOOXFdwAN9YikI");
     let params = {
       query: param,
@@ -29,7 +29,8 @@ class googlesearch {
         var url = items[0].result.detailedDescription.url;
         console.log(url);
         var suffix = url.split("/");
-        dbPedia.dbpedia(suffix[suffix.length-1]);
+        var result = dbPedia.dbpedia(suffix[suffix.length-1]);
+        return result;
       }
       console.log(items[0].result.name);
       console.log(items[0].result['@type']);

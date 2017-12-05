@@ -242,7 +242,8 @@ class HttpClient {
         web.forEach ((w) => {
             //Ricerca w su google-search.js
             console.log(w);
-            gsearch.googlesearch(w);
+            var result = gsearch.googlesearch(w);
+            return result;
         });
     }
 
@@ -316,7 +317,8 @@ class HttpClient {
                 else
                     c = webs.responses[0].webDetection.webEntities.length;
             }
-            this.elaborate(lab, lat, long, web);
+            var result = this.elaborate(lab, lat, long, web);
+            return result;
         }
         else
             return 0;

@@ -2,7 +2,7 @@ class dbPedia {
     constructor() {
 
     }
-    dbpedia(param) {
+    async dbpedia(param) {
         var SparqlClient = require('sparql-client');
         var util = require('util');
         var endpoint = 'http://dbpedia.org/sparql';
@@ -21,6 +21,9 @@ class dbPedia {
             .execute(function (error, results) {
                 console.log(results.results.bindings[0].abstract.value);
                 console.log(util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true) + "\n");
+                
+                return util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true);
+                
                 //process.stdout.write(util.inspect(arguments, null, 20, true) + "\n");
             });
     }

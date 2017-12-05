@@ -53,7 +53,7 @@ app.post('/upload', upload.single('image'), function (req, res, next) {
 
 
 //listen in a specific port
-app.listen((process.env.PORT || 8080));
+app.listen((process.env.PORT || 8084));
 
 //check status
-console.log('Server running at http://localhost:8080/');
+console.log('Server running at http://localhost:8084/');

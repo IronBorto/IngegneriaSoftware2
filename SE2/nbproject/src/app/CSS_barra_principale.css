@@ -143,3 +143,8 @@ body {
 
         opacity:0.8;
 }
+
+.SlideShow {
+    animation-name: animatetop;
+    animation-duration: 2s;
+}

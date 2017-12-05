@@ -40,6 +40,6 @@
 
 #output {
     max-width: 40%;
-    border-radius: 50px 50px 50px 50px;
-    border: #BBB dashed thin ;
+    border: 1px solid grey;
+    border-radius: 8px;
 }

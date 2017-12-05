@@ -11,136 +11,132 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
+    <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="/app/CSS_barra_principale.css" type="text/css" charset="utf-8" />
         <link rel="stylesheet" href="CSS_risultati.css">
         
-        <head>
-            <title>Intestazione</title>
-            <meta charset="UTF-8">
-			<script type="text/javascript">
-				function nasc(){
-					var na = document.getElementsByClassName('people');
-					for(i = 0; i<na.length; i++) {
-						na[i].style.display = 'inline';
-                                            }
-                                            na[0].id='tab2';
-                                            na[2].id='tab3';
-                                                
-				}
-				window.onload = nasc;
-			</script>
-        </head>
-        <body>
-            <iframe src="header.html" width="100%" frameborder="0"></iframe>
-     
-    <br>
-    <br>
-    <div class="container">
-        <div>
-            <h1>Lion</h1>
-        </div>
+        
+        <title>Intestazione</title>
+        <meta charset="UTF-8">
+            <script type="text/javascript">
+                <!--funzione per mostrare le giuste informazioni in base alla categoria dell'immagine-->
+                    function nasc(){
+                            var na = document.getElementsByClassName('people');
+                            for(i = 0; i<na.length; i++) {
+                                    na[i].style.display = 'inline';
+                                }
+                                na[0].id='tab2';
+                                na[2].id='tab3';
+
+                    }
+                    window.onload = nasc;
+            </script>
+    </head>
+    <body>
+        <iframe src="header.html" width="100%" frameborder="0"></iframe>
+        <br>
+        <br>
+        <!--parte immagini-->
         <div class="container">
-            <div class="thumbex">
-              <div class="thumbnail"><a href="#"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lion_d%27Afrique.jpg/280px-Lion_d%27Afrique.jpg"/><span>Leone</span></a></div>
+            <!--Nome oggetto cercato-->
+            <div class="resize-titolo">
+                Lion
             </div>
-            <div class="thumbex">    
-              <div class="thumbnail"><a href="#"><img src="http://clubofmozambique.com/wp-content/uploads/2017/09/lionlion.jpg"/><span>Leone</span></a></div>
+            <!-- immagini-->
+            <div class="container">
+                <div class="thumbex">
+                    <div class="thumbnail">
+                        <a href="#"> 
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lion_d%27Afrique.jpg/280px-Lion_d%27Afrique.jpg"/>
+                            <span>Leone</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="thumbex">    
+                    <div class="thumbnail">
+                        <a href="#">
+                            <img src="http://clubofmozambique.com/wp-content/uploads/2017/09/lionlion.jpg"/>
+                            <span>Leone</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="thumbex">
+                    <div class="thumbnail">
+                        <a href="#">
+                            <img src="https://images.wired.it/wp-content/uploads/2015/07/1438336460_leone-em-600x335.jpg"/>
+                            <span>Leone</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="thumbex">
-              <div class="thumbnail"><a href="#"><img src="https://images.wired.it/wp-content/uploads/2015/07/1438336460_leone-em-600x335.jpg" /><span>Leone</span></a></div>
-            </div>
-          </div>
-          <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
-
-   
-            
-		<div class="tab_container">
-			<input id="tab1" type="radio" name="tabs" checked>
-			<label for="tab1"><i class="fa fa-code"></i><span>Desciption</span></label>
-
-			<input type="radio" name="tabs" class="people" hidden>
-			<label for="tab2" class="people" id="nascosto"><i class="fa fa-pencil-square-o"></i><span>Career</span></label>
-
-			<input type="radio" name="tabs" class="people" hidden>
-			<label for="tab3" class="people" id="nascosto"><i class="fa fa-pencil-square-o"></i><span>Award</span></label>
-
-			<input type="radio" name="tabs" class="animal" hidden>
-			<label for="tab2" class="animal" id="nascosto"><i class="fa fa-bar-chart-o"></i><span>Physical Description</span></label>
-
-			<input type="radio" name="tabs" class="animal" hidden>
-			<label for="tab3" class="animal" id="nascosto"><i class="fa fa-bar-chart-o"></i><span>Distribution</span></label>
-
-			<input type="radio" name="tabs" class="place" hidden>
-			<label for="tab2" class="place" id="nascosto"><i class="fa fa-folder-open-o"></i><span>Map</span></label>
-
-			<input type="radio" name="tabs" class="place" hidden>
-			<label for="tab3" class="place" id="nascosto"><i class="fa fa-folder-open-o"></i><span>External Link</span></label>
-
-			<input type="radio" name="tabs" class="art" hidden>
-			<label for="tab2" class="art" id="nascosto"><i class="fa fa-envelope-o"></i><span>Author</span></label>
-
-			<input type="radio" name="tabs" class="art" hidden>
-			<label for="tab3" class="art" id="nascosto"><i class="fa fa-envelope-o"></i><span>Map</span></label>
-
-			<section id="content1" class="tab-content">
-				<h3>Headline 1</h3>
-		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		      	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		      	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		      	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		      	
-			</section>
-
-			<section id="content2" class="tab-content">
-				<h3>Headline 2</h3>
-		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-		      
-			</section>
-
-			<section id="content3" class="tab-content">
-				<h3>Headline 3</h3>
-		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		      	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		      	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		      	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		    
-			</section>
-
-			<section id="content4" class="tab-content">
-				<h3>Headline 4</h3>
-		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		      	tempor incididunt ut labore et dolore magna aliqua.</p>
-		      	
-			</section>
-
-			<section id="content5" class="tab-content">
-				<h3>Headline 5</h3>
-		      	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		      	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-		      	
-			</section>
-
-		</div>
-        <!--<div class="row">
-            <div class="col-3">
-                <img src="https://i.pinimg.com/736x/78/b4/f8/78b4f865a46a2a4cdce4a621da87d538--lions-tattoo-tatoo.jpg" id="immagine_risultati" alt="Lion" > 
-            </div>
-            <div class="col-9">
-                <div class="resize-paragrafo">Lion</div>
-                <div class="resize-paragrafo">Nome scientifico: Panthera leo</div>
-                <div class="resize-paragrafo">Longevità: 10 - 14 anni</div>
-                <div class="resize-paragrafo">Velocità: 80km/h </div>
-                Il leone è un mammifero carnivoro della famiglia dei felidi. Dopo la tigre, è il più grande dei cinque grandi felidi del genere Panthera con alcuni maschi la cui massa corporea supera i 250 kg.
-            </div>
-          
-        </div>-->
-    </div>
+            <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+        </div>
+        <!--parte informazioni, sono tutte nascoste tranne la descrizione, poi in base alla categoria vengono mostrate-->
+        <div class="tab_container"> <!--sempre presente, descrizione-->
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1"><i class="fa fa-code"></i><span>Desciption</span></label>
+            <!--people carriera-->
+            <input type="radio" name="tabs" class="people" hidden>
+            <label for="tab2" class="people" id="nascosto">
+                <i class="fa fa-pencil-square-o"></i>
+                <span>Career</span>
+            </label>
+            <!--people Premi-->
+            <input type="radio" name="tabs" class="people" hidden>
+            <label for="tab3" class="people" id="nascosto">
+                <i class="fa fa-pencil-square-o"></i>
+                <span>Award</span>
+            </label>
+            <!--Animal descrizion fisica-->
+            <input type="radio" name="tabs" class="animal" hidden>
+            <label for="tab2" class="animal" id="nascosto">
+                <i class="fa fa-bar-chart-o"></i>
+                <span>Physical Description</span>
+            </label>
+            <!--Animal distribuzione-->
+            <input type="radio" name="tabs" class="animal" hidden>
+            <label for="tab3" class="animal" id="nascosto">
+                <i class="fa fa-bar-chart-o"></i>
+                <span>Distribution</span>
+            </label>
+             <!--Place mappa-->
+            <input type="radio" name="tabs" class="place" hidden>
+            <label for="tab2" class="place" id="nascosto">
+                <i class="fa fa-folder-open-o"></i>
+                <span>Map</span>
+            </label>
+            <!--Place link esterni-->
+            <input type="radio" name="tabs" class="place" hidden>
+            <label for="tab3" class="place" id="nascosto">
+                <i class="fa fa-folder-open-o"></i>
+                <span>External Link</span>
+            </label>
+            <!--Art autore-->
+            <input type="radio" name="tabs" class="art" hidden>
+            <label for="tab2" class="art" id="nascosto">
+                <i class="fa fa-envelope-o"></i>
+                <span>Author</span>
+            </label>
+            <!--Art mappa-->
+            <input type="radio" name="tabs" class="art" hidden>
+            <label for="tab3" class="art" id="nascosto">
+                <i class="fa fa-envelope-o"></i>
+                <span>Map</span>
+            </label>
+            <!--contenuto 1, associato alla descrizione-->
+            <section id="content1" class="tab-content">
+            <p>contenuto 1</p>
+            </section>
+            <!--contenuto 2, associato a: Carriera per People, Descrizione fisica per Animal, Mappa per Place, Autore per Art-->
+            <section id="content2" class="tab-content">
+            <p>contenuto 2</p>
+            </section>
+            <!--contenuto 3, associato a: Premi per People, Distribuzione per Animal, Link-Esterni per Place, Mappa per Art--> 
+            <section id="content3" class="tab-content">
+            <p>contenuto 3</p>
+            </section>
+        </div>
+    </body>
+</html>

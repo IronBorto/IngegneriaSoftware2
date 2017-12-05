@@ -237,9 +237,11 @@ class HttpClient {
         }
         labels.forEach ( (lab) => {
             //Aggiungi Label su sito
+            console.log(lab);
         });
         web.forEach ((w) => {
             //Ricerca w su google-search.js
+            console.log(w);
             gsearch.googlesearch(w);
         });
     }
@@ -248,32 +250,49 @@ class HttpClient {
     googleAPIVision (filename) {
         
         vision = new visions.ImageAnnotatorClient();
-        const labels = this.detectLabelsGCS("a2", filename);
-        const webs = this.detectWeb(filename);
+        //const labels = this.detectLabelsGCS("a2", filename);
+        var labels = require('./sampleLabel.json');
+        //const webs = this.detectWeb(filename);
+        var webs = require('./sampleWeb.json');
         if (labels != "err" && webs != "err"){
             var landmarkB = false;
             var c = 0;
             var lab = new Array();
             var web = new Array();
-            labels.labelAnnotations.forEach((label) => {
-                c++;
-                if(label == "landmark")
+            var label;
+            for (c = 0; c < labels.responses[0].labelAnnotations.length; c++) {
+                label = labels.responses[0].labelAnnotations[c];
+                if(label.description == "landmark")
                     landmarkB = true;
                 else{
-                    if (lab.score >= 1){
+                    if (label.score >= 0.9){
                         lab[c] = label.description;
                         //Tieni buoni quei valori per analisi
                     }
                     else
-                        break;    
+                    c = labels.responses[0].labelAnnotations.length;
                 }
-            });
+            }
+            /*labels.responses.labelAnnotations.forEach((label) => {
+                c++;
+                if(label == "landmark")
+                    landmarkB = true;
+                else{
+                    if (lab.score >= 1  && b == true){
+                        lab[c] = label.description;
+                        //Tieni buoni quei valori per analisi
+                    }
+                    else
+                        b = false;
+                }
+            });*/
             var lat = 0;
             var long = 0;
             if (landmarkB == true){
-                const landmark = this.detectLandmarks(filename).first;
-                lat = landmark.landmarkAnnotations.location.latLng.latitude;
-                long = landmark.landmarkAnnotations.location.latLng.longitude;
+                //const landmark = this.detectLandmarks(filename).first;
+                const landmark = require('./sampleLandmark.json');
+                lat = landmark.responses[0].landmarkAnnotations[0].locations[0].latLng.latitude;
+                long = landmark.responses[0].landmarkAnnotations[0].locations[0].latLng.longitude;
                 // Utilizza il landmark per ottenere nome e coordinate -->
                 /*
                 "locations": [
@@ -286,16 +305,17 @@ class HttpClient {
                 ]
                 */
             }
-            var w = 0;
-            webs.webDetection.webEntities.forEach((webr) => {
-                w++;
-                if (webr.score >= 0.8){
-                    web[w] = webr.description;
+            var score = webs.responses[0].webDetection.webEntities[0].score;
+            var webr;
+            for (c = 0; c < webs.responses[0].webDetection.webEntities.length; c++) {
+                webr = webs.responses[0].webDetection.webEntities[c];
+                if ((webr.score >= 0.8) && (webr.score + 2 > score)){
+                    web[c] = webr.description;
                     //Tieni buoni quei valori per analisi
                 }
                 else
-                    break;
-            });
+                    c = webs.responses[0].webDetection.webEntities.length;
+            }
             this.elaborate(lab, lat, long, web);
         }
         else

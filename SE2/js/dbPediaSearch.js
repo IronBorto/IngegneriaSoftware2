@@ -19,7 +19,9 @@ class dbPedia {
         console.log("Query: " + query);
         client.query(query)
             .execute(function (error, results) {
-                process.stdout.write(util.inspect(arguments, null, 20, true) + "\n"); 1
+                console.log(results.results.bindings[0].abstract.value);
+                console.log(util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true) + "\n");
+                //process.stdout.write(util.inspect(arguments, null, 20, true) + "\n");
             });
     }
 

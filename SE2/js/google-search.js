@@ -12,6 +12,7 @@ plus.people.get({
 */
 
 const  KGSearch = require('google-kgsearch');
+const dbPedia = require('./dbPediaSearch');
 class googlesearch {
   constructor() { }
 
@@ -24,7 +25,12 @@ class googlesearch {
 
     KGSearch.kGraph.search(params, (err, items) => {
       if (err) console.error(err)
-      console.log(items[0].result.detailedDescription.url);
+      if(items[0].result.detailedDescription != undefined) {
+        var url = items[0].result.detailedDescription.url;
+        console.log(url);
+        var suffix = url.split("/");
+        dbPedia.dbpedia(suffix[suffix.length-1]);
+      }
       console.log(items[0].result.name);
       console.log(items[0].result['@type']);
     })

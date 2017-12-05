@@ -5,6 +5,7 @@ const visions = require('@google-cloud/vision')/*({
     keyFilename: '../private/serviceAccount.json'
   })*/;
 var vision;
+var gsearch = require('./google-search');
 
 /* FORSE BISOGNA FARE COSI'
 export GOOGLE_APPLICATION_CREDENTIALS=../private/serviceAccount.json
@@ -246,6 +247,7 @@ class HttpClient {
         });
         web.forEach ((w) => {
             //Ricerca w su google-search.js
+            gsearch.googlesearch(w);
         });
     }
 

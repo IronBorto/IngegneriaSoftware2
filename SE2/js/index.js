@@ -48,7 +48,6 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
     var imageFile = fs.readFileSync(req.file.path);
     var encoded = new Buffer(imageFile).toString('base64');
     //gs.upload(req.file.path);
-    var result;
 
     const makeRequest = await call();
     async function call() {

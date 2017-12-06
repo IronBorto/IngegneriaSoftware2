@@ -51,7 +51,7 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
 
     const makeRequest = await call();
     async function call() {
-        const value1 = await gvision.googleAPIVision(encoded);
+        const value1 = await gvision.googleAPIVision(req.file.path);
         const value2 = await gsearch.googlesearch(value1[0]);
         const value3 = await dbpedia.dbpedia(value2[2]);
         return value3;
@@ -66,7 +66,7 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
 });
 
 //listen in a specific port
-app.listen((process.env.PORT || 8083));
+app.listen((process.env.PORT || 8086));
 
 //check status
-console.log('Server running at http://localhost:8083/');
+console.log('Server running at http://localhost:8086/');

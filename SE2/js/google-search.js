@@ -24,7 +24,8 @@ class googlesearch {
     }
     var results = new Array(); 
     KGSearch.kGraph.search(params, (err, items) => {
-      if (err) console.error(err)
+      if (err) 
+        console.error(err);
       console.log(items[0].result.name);
       results.push(items[0].result.name);
       console.log(items[0].result['@type']);

@@ -27,7 +27,7 @@ class dbPedia {
                 
                 //process.stdout.write(util.inspect(arguments, null, 20, true) + "\n");
             });
-        await new Promise((resolve, reject) => setTimeout(resolve, 1500));
+        await new Promise((resolve, reject) => setTimeout(resolve, 2000));
         return result;
     }
 

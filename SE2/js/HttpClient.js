@@ -1,7 +1,7 @@
 'use strict';
 
-const visions = require('@google-cloud/vision');
-var vision;
+const Vision = require('@google-cloud/vision');
+const vision = new Vision();
 //var gsearch = require('./google-search');
 
 
@@ -11,11 +11,11 @@ class HttpClient {
         
     }
 
-    detectLabels (fileName) {
+    async detectLabels (fileName) {
         // [START vision_label_detection]
         // Imports the Google Cloud client library
         
-    
+        console.log('Entro in detectLabels con ' + fileName);
         // Creates a client
         
         /**
@@ -56,15 +56,15 @@ class HttpClient {
     
         // Performs label detection on the gcs file
         vision.labelDetection(request)
-            .then((results) => {
+        .then((results) => {
             const labels = results[0].labelAnnotations;
-        console.log('Labels:');
-        labels.forEach((label) => console.log(label));
-    })
-    .catch((err) => {
-            console.error('ERROR:', err);
+            console.log('Labels:');
+            labels.forEach((label) => console.log(label));
+        })
+        .catch((err) => {
+            console.error('ERROR:', err.stack);
             return "err";
-    });
+        });
         // [END vision_label_detection_gcs]
     }
     
@@ -125,19 +125,21 @@ class HttpClient {
     }*/
     
     
-    detectWeb (fileName) {
+    async detectWeb (fileName) {
         // [START vision_web_detection]
     
         // Imports the Google Cloud client library
         
         // Creates a client
-    
+        
+        console.log('Entro in detectWeb con ' + fileName);
         /**
          * TODO(developer): Uncomment the following line before running the sample.
          */
         // const fileName = 'Local image file, e.g. /path/to/image.png';
     
         // Detect similar images on the web to a local file
+        console.log(fileName);
         vision.webDetection({ source: { filename: fileName } })
             .then((results) => {
             const webDetection = results[0].webDetection;
@@ -252,11 +254,13 @@ class HttpClient {
 
     async googleAPIVision (filename) {
         
-        vision = new visions.ImageAnnotatorClient();
-        //const labels = this.detectLabelsGCS("a2", filename);
-        var labels = require('./sampleLabel.json');
-        //const webs = this.detectWeb(filename);
-        var webs = require('./sampleWeb.json');
+        //vision = new visions.ImageAnnotatorClient();
+        
+        const labels = await this.detectLabels(filename);
+        //var labels = require('./sampleLabel.json');
+        const webs = await this.detectWeb(filename);
+        //var webs = require('./sampleWeb.json');
+        await new Promise((resolve, reject) => setTimeout(resolve, 3000));
         if (labels != "err" && webs != "err"){
             var landmarkB = false;
             var c = 0;

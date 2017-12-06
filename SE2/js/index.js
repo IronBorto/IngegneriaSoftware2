@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var db = require('./dbPediaSearch');
 var gsearch = require('./google-search');
 var gvision = require('./HttpClient');
+var dbpedia = require('./dbPediaSearch');
 var util = require('util');
 var fs = require('fs');
 var util = require('util');
@@ -47,9 +48,20 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
     var imageFile = fs.readFileSync(req.file.path);
     var encoded = new Buffer(imageFile).toString('base64');
     //gs.upload(req.file.path);
-    var json = gvision.googleAPIVision(encoded);
-    console.log(json);
-    res.json({value: json});
+    var result;
+
+    const makeRequest = await call();
+    async function call() {
+        const value1 = await gvision.googleAPIVision(encoded);
+        const value2 = await gsearch.googlesearch(value1[0]);
+        //await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+        const value3 = await dbpedia.dbpedia(value2[2]);
+        return value3;
+      }
+
+
+      console.log(makeRequest);
+      res.json({value: makeRequest});
     console.log('Finito');
     //res.send(); inserire il percorso della pagina ../public_html/Pagine/[NomePagina]
     //Dovrebbe arrivare un json nella pagina indicata e si può ottenere il risultato cercando il campo value

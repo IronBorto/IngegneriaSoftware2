@@ -17,15 +17,18 @@ class dbPedia {
         var client = new SparqlClient(endpoint);
         console.log("Query to " + endpoint);
         console.log("Query: " + query);
+        var result;
         client.query(query)
             .execute(function (error, results) {
                 console.log(results.results.bindings[0].abstract.value);
                 console.log(util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true) + "\n");
                 
-                return util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true);
+                result = util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true);
                 
                 //process.stdout.write(util.inspect(arguments, null, 20, true) + "\n");
             });
+        await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+        return result;
     }
 
 }

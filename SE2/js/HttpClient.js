@@ -2,7 +2,7 @@
 
 const visions = require('@google-cloud/vision');
 var vision;
-var gsearch = require('./google-search');
+//var gsearch = require('./google-search');
 
 
 class HttpClient {
@@ -229,7 +229,7 @@ class HttpClient {
         // [END vision_web_detection_gcs]
     }*/
 
-    elaborate (labels, latitude, longitude, web) {
+    async elaborate (labels, latitude, longitude, web) {
         if (latitude != 0 && longitude != 0) {
             //Visualizza su sito
             console.log(latitude);
@@ -239,16 +239,18 @@ class HttpClient {
             //Aggiungi Label su sito
             console.log(lab);
         });
+        var result = new Array();
         web.forEach ((w) => {
             //Ricerca w su google-search.js
             console.log(w);
-            var result = gsearch.googlesearch(w);
-            return result;
+            //var result = gsearch.googlesearch(w);
+            result.push(w);
         });
+        return result;
     }
 
 
-    googleAPIVision (filename) {
+    async googleAPIVision (filename) {
         
         vision = new visions.ImageAnnotatorClient();
         //const labels = this.detectLabelsGCS("a2", filename);
@@ -317,7 +319,7 @@ class HttpClient {
                 else
                     c = webs.responses[0].webDetection.webEntities.length;
             }
-            var result = this.elaborate(lab, lat, long, web);
+            var result = await this.elaborate(lab, lat, long, web);
             return result;
         }
         else

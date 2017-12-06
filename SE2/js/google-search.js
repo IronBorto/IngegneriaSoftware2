@@ -38,7 +38,7 @@ class googlesearch {
         results.push(suffix[suffix.length-1]);
       }
     });
-    await new Promise((resolve, reject) => setTimeout(resolve, 800));
+    await new Promise((resolve, reject) => setTimeout(resolve, 1000));
     return results;
   }
 

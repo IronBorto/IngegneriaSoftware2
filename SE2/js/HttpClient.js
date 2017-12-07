@@ -4,7 +4,7 @@ const Vision = require('@google-cloud/vision');
 const vision = new Vision();
 //var gsearch = require('./google-search');
 
-var labels, webDetection;
+var labels, webDetection, landmarks;
 
 class HttpClient {
 
@@ -70,7 +70,7 @@ class HttpClient {
         // [END vision_label_detection_gcs]
     }
     
-    detectLandmarks (fileName) {
+    async detectLandmarks (fileName) {
         // [START vision_landmark_detection]
         
         // Creates a client
@@ -83,7 +83,7 @@ class HttpClient {
         // Performs landmark detection on the local file
         vision.landmarkDetection({ source: {filename: fileName} })
             .then((results) => {
-            const landmarks = results[0].landmarkAnnotations;
+            landmarks = results[0].landmarkAnnotations;
         console.log('Landmarks:');
         landmarks.forEach((landmark) => console.log(landmark));
     })
@@ -260,10 +260,9 @@ class HttpClient {
         //vision = new visions.ImageAnnotatorClient();
         
         await this.detectLabels(filename);
-        await new Promise((resolve, reject) => setTimeout(resolve, 30000));
+        await new Promise((resolve, reject) => setTimeout(resolve, 20000));
         await this.detectWeb(filename);
-        
-        await new Promise((resolve, reject) => setTimeout(resolve, 30000));
+        await new Promise((resolve, reject) => setTimeout(resolve, 20000));
         //labels = require('./sampleLabel.json');
         //webDetection = require('./sampleWeb.json');
         if (labels != "err" && webDetection != "err"){
@@ -272,8 +271,8 @@ class HttpClient {
             var lab = new Array();
             var web = new Array();
             var label;
-            for (c = 0; c < labels[0].labelAnnotations.length; c++) {
-                label = labels[0].labelAnnotations[c];
+            for (c = 0; c < labels.length; c++) {
+                label = labels[c];
                 if(label.description == "landmark")
                     landmarkB = true;
                 else{
@@ -282,7 +281,7 @@ class HttpClient {
                         //Tieni buoni quei valori per analisi
                     }
                     else
-                    c = labels[0].labelAnnotations.length;
+                    c = labels.length;
                 }
             }
             /*labels.responses.labelAnnotations.forEach((label) => {
@@ -301,10 +300,11 @@ class HttpClient {
             var lat = 0;
             var long = 0;
             if (landmarkB == true){
-                //const landmark = this.detectLandmarks(filename).first;
-                const landmark = require('./sampleLandmark.json');
-                lat = landmark.responses[0].landmarkAnnotations[0].locations[0].latLng.latitude;
-                long = landmark.responses[0].landmarkAnnotations[0].locations[0].latLng.longitude;
+                landmarks = await this.detectLandmarks(filename);
+                await new Promise((resolve, reject) => setTimeout(resolve, 20000));
+                //const landmark = require('./sampleLandmark.json');
+                lat = landmarks[0].locations[0].latLng.latitude;
+                long = landmarks[0].locations[0].latLng.longitude;
                 // Utilizza il landmark per ottenere nome e coordinate -->
                 /*
                 "locations": [
@@ -317,9 +317,10 @@ class HttpClient {
                 ]
                 */
             }
-            var score = webDetection.responses[0].webDetection.webEntities[0].score;
+            var score = webDetection.webEntities[0].score;
             var webr;
-            for (c = 0; c < webDetection.webEntities.length; c++) {
+            web[0] = webDetection.webEntities[0].description;
+            for (c = 1; c < webDetection.webEntities.length; c++) {
                 webr = webDetection.webEntities[c];
                 if ((webr.score >= 0.8) && (webr.score + 2 > score)){
                     web[c] = webr.description;

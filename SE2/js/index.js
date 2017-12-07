@@ -53,6 +53,7 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
     async function call() {
         const value1 = await gvision.googleAPIVision(req.file.path);
         const value2 = await gsearch.googlesearch(value1[0]);
+        await new Promise((resolve, reject) => setTimeout(resolve, 1000));
         const value3 = await dbpedia.dbpedia(value2[2]);
         return value3;
       }

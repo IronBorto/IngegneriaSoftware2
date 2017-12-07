@@ -2,9 +2,10 @@
 
 const Vision = require('@google-cloud/vision');
 const vision = new Vision();
+const fetchJson = require('node-fetch-json');
 //var gsearch = require('./google-search');
 
-var labels, webDetection, landmarks;
+var labels, webDetection, landmarks, location;
 
 class HttpClient {
 
@@ -233,23 +234,38 @@ class HttpClient {
     });
         // [END vision_web_detection_gcs]
     }*/
+    //data.results[0].address_components[1].short_name
+    handleJson(data) {
+        location = data.results[0].address_components[1].short_name;
+        console.log(data.results[0].address_components[1].short_name);
+    }
 
     async elaborate (labels, latitude, longitude, web) {
+        var result = new Array();
+        result.push(web[0]);
         if (latitude != 0 && longitude != 0) {
             //Visualizza su sito
+            const data = latitude+","+longitude;
+            fetchJson("http://maps.googleapis.com/maps/api/geocode/json?latlng="+ data)
+            .then(response => {
+                this.handleJson(response);
+                result.push(location);
+            })
+            .catch(error => console.log("Si è verificato un errore!"));
+            await new Promise((resolve, reject) => setTimeout(resolve, 5000));
             console.log(latitude);
             console.log(longitude);
+            console.log(location);
         }
         labels.forEach ( (lab) => {
             //Aggiungi Label su sito
             console.log(lab);
         });
-        var result = new Array();
         web.forEach ((w) => {
             //Ricerca w su google-search.js
             console.log(w);
             //var result = gsearch.googlesearch(w);
-            result.push(w);
+            //result.push(w);
         });
         return result;
     }
@@ -260,9 +276,7 @@ class HttpClient {
         //vision = new visions.ImageAnnotatorClient();
         
         await this.detectLabels(filename);
-        await new Promise((resolve, reject) => setTimeout(resolve, 20000));
-        await this.detectWeb(filename);
-        await new Promise((resolve, reject) => setTimeout(resolve, 20000));
+        await new Promise((resolve, reject) => setTimeout(resolve, 30000));
         //labels = require('./sampleLabel.json');
         //webDetection = require('./sampleWeb.json');
         if (labels != "err" && webDetection != "err"){
@@ -301,10 +315,11 @@ class HttpClient {
             var long = 0;
             if (landmarkB == true){
                 landmarks = await this.detectLandmarks(filename);
-                await new Promise((resolve, reject) => setTimeout(resolve, 20000));
+                await new Promise((resolve, reject) => setTimeout(resolve, 30000));
                 //const landmark = require('./sampleLandmark.json');
                 lat = landmarks[0].locations[0].latLng.latitude;
                 long = landmarks[0].locations[0].latLng.longitude;
+                web[0] = landmarks[0].description;
                 // Utilizza il landmark per ottenere nome e coordinate -->
                 /*
                 "locations": [
@@ -317,18 +332,23 @@ class HttpClient {
                 ]
                 */
             }
-            var score = webDetection.webEntities[0].score;
-            var webr;
-            web[0] = webDetection.webEntities[0].description;
-            for (c = 1; c < webDetection.webEntities.length; c++) {
-                webr = webDetection.webEntities[c];
-                if ((webr.score >= 0.8) && (webr.score + 2 > score)){
-                    web[c] = webr.description;
-                    //Tieni buoni quei valori per analisi
+            else {
+                await this.detectWeb(filename);
+                await new Promise((resolve, reject) => setTimeout(resolve, 30000));
+                var score = webDetection.webEntities[0].score;
+                var webr;
+                web[0] = webDetection.webEntities[0].description;
+                for (c = 1; c < webDetection.webEntities.length; c++) {
+                    webr = webDetection.webEntities[c];
+                    if ((webr.score >= 0.8) && (webr.score + 2 > score)){
+                        web[c] = webr.description;
+                        //Tieni buoni quei valori per analisi
+                    }
+                    else
+                        c = webDetection.webEntities.length;
                 }
-                else
-                    c = webDetection.webEntities.length;
             }
+            
             var result = await this.elaborate(lab, lat, long, web);
             return result;
         }

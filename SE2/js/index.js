@@ -48,14 +48,17 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
     var imageFile = fs.readFileSync(req.file.path);
     var encoded = new Buffer(imageFile).toString('base64');
     //gs.upload(req.file.path);
-    var result;
 
     const makeRequest = await call();
     async function call() {
-        const value1 = await gvision.googleAPIVision(encoded);
-        const value2 = await gsearch.googlesearch(value1[0]);
-        //await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+        const value1 = await gvision.googleAPIVision(req.file.path);
+        var value2;
+        if(value1.length > 1)
+            value2 = await gsearch.googlesearch(value1[0]+" "+value1[1]);
+        else
+            value2 = await gsearch.googlesearch(value1[0]);
         const value3 = await dbpedia.dbpedia(value2[2]);
+        await new Promise((resolve, reject) => setTimeout(resolve, 5000));
         return value3;
       }
 
@@ -68,7 +71,7 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
 });
 
 //listen in a specific port
-app.listen((process.env.PORT || 8083));
+app.listen((process.env.PORT || 8088));
 
 //check status
-console.log('Server running at http://localhost:8083/');
+console.log('Server running at http://localhost:8088/');

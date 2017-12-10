@@ -22,12 +22,12 @@ class dbPedia {
             .execute(function (error, results) {
                 console.log(results.results.bindings[0].abstract.value);
                 console.log(util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true) + "\n");
-                
-                result = util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true);
+                result = results.results.bindings[0].abstract.value;
+                //result = util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true);
                 
                 //process.stdout.write(util.inspect(arguments, null, 20, true) + "\n");
             });
-        await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+        await new Promise((resolve, reject) => setTimeout(resolve, 2000));
         return result;
     }
 

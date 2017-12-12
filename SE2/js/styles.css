@@ -1,0 +1,241 @@
+/* Master Styles */
+/*h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+body {
+  margin: 2em;
+}
+body, input[text], button {
+  color: #888;
+  font-family: Cambria, Georgia;
+}
+a {
+  cursor: pointer;
+  cursor: hand;
+}
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: auto;
+}*/
+
+/* Navigation link styles */
+/*nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: #607D8B;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+nav a.active {
+  color: #039be5;
+}*/
+
+/* everywhere else 
+ {
+  font-family: Arial, Helvetica, sans-serif;
+}*/
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.transition {
+    transition:all 0.3s ease-in-out;
+}
+
+.transition:before, .transition:after {
+    transition:all 0.3s ease-in-out;
+}
+
+button:disabled {
+    opacity: 0.6;
+    transition-property: none !important;
+    color: grey;
+    border-color: grey;
+    
+   
+}
+
+
+button {
+    color:#000;
+    background:transparent;
+    border-width:2px;
+    border-style: solid;
+    border-color: #6495ed;
+    position:relative;
+    margin:1em;
+    display:inline-block;
+    padding:0.5em 1em;
+
+    text-align:center;
+    border-radius: 50px 50px 50px 50px;
+}
+
+
+
+button:before, button:after {
+    content:'';
+    display:block;
+    position:absolute;
+    border-color:#6495ed;
+    box-sizing:border-box;
+    border-style:solid;
+    width:1em;
+    height:1em;
+}
+
+button:before {
+    top:-6px;
+    left:-6px;
+    border-width:2px 0 0 2px;
+    
+}
+
+button:after {
+    bottom:-6px;
+    right:-6px;
+    border-width:0 2px 2px 0;
+}
+
+.transition:hover:before, .transition:hover:after {
+    width:calc(100% + 12px);
+    height:calc(100% + 12px);
+    border-color:#fff;
+}
+
+.transition:hover {
+    color:#000;
+    background-color:#6495ed;
+    border-color:#000;
+}
+
+
+
+.input-btn {
+    color:#000;
+    background:transparent;
+    border-width:2px;
+    border-style: solid;
+    border-color: #6495ed;
+    position:relative;
+    margin:1em;
+    display:inline-block;
+    padding:0.5em 1em;
+    transition:all 0.3s ease-in-out;
+    text-align:center;
+    border-radius: 50px 50px 50px 50px;
+}
+.input-btn:before, .input-btn:after {
+    content:'';
+    display:block;
+    position:absolute;
+    border-color:#6495ed;
+    box-sizing:border-box;
+    border-style:solid;
+    width:1em;
+    height:1em;
+    transition:all 0.3s ease-in-out;
+}
+
+.input-btn:before {
+    top:-6px;
+    left:-6px;
+    border-width:2px 0 0 2px;
+    
+}
+
+.input-btn:after {
+    bottom:-6px;
+    right:-6px;
+    border-width:0 2px 2px 0;
+}
+
+.input-btn:hover:before, .input-btn:hover:after {
+    width:calc(100% + 12px);
+    height:calc(100% + 12px);
+    border-color:#fff;
+}
+
+.input-btn:hover {
+    color:#000;
+    background-color:#6495ed;
+    border-color:#000;
+}
+
+#img-upload{
+    width: 100%;
+}
+
+.popolar {
+    width:75%; 
+    border-radius: 50px 50px 50px 50px; 
+    border-color: gray; 
+    border-style: solid;   
+    border-width: 1px;
+    transition: all .2s ease;
+}
+
+.popolar:hover {
+    transition: all .2s ease;
+    width:100%;
+}
+

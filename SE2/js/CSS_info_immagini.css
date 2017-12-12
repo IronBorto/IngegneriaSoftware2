@@ -1,0 +1,45 @@
+.container1 {
+  position: relative;
+  
+ 
+}
+
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  width: 100%;
+  left: 0;
+  right: 0;
+  background-color: #6495ed;
+  overflow: hidden;
+  height:0;
+  transition: .5s ease;
+  opacity: 0.9;
+  border-radius: 50px 50px 50px 50px;
+  
+}
+
+.container1:hover .overlay {
+  bottom: 0;
+  height: 100%;
+  border: 1px solid black;
+  
+}
+
+.text {
+  white-space: nowrap; 
+  color: black;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+ 
+}
+
+#output {
+    max-width: 40%;
+    border: 1px solid grey;
+    border-radius: 8px;
+}

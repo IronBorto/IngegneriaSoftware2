@@ -11,7 +11,7 @@ plus.people.get({
 });
 */
 
-const  KGSearch = require('google-kgsearch');
+const KGSearch = require('google-kgsearch');
 //const dbPedia = require('./dbPediaSearch');
 class googlesearch {
   constructor() { }
@@ -22,7 +22,7 @@ class googlesearch {
       query: param,
       limit: 1
     }
-    var results = new Array(); 
+    var results = new Array();
     KGSearch.kGraph.search(params, (err, items) => {
       if (err) {
         console.error(err);
@@ -33,16 +33,19 @@ class googlesearch {
       else {
         console.log(items[0].result.name);
         results.push(items[0].result.name);
+        var name = items[0].result.name.replace(" ", "_");
         console.log(items[0].result['@type']);
         results.push(items[0].result['@type']);
-        if(items[0].result.detailedDescription != undefined) {
+        if (items[0].result.detailedDescription != undefined) {
           var url = decodeURIComponent(items[0].result.detailedDescription.url);
           console.log(url);
           var suffix = url.split("/");
-          console.log(suffix[suffix.length-1]);
+          console.log(suffix[suffix.length - 1]);
           //var result = dbPedia.dbpedia(suffix[suffix.length-1]);
-          results.push(suffix[suffix.length-1]);
+          results.push(suffix[suffix.length - 1]);
         }
+        else
+          results.push(name);
       }
     });
     await new Promise((resolve, reject) => setTimeout(resolve, 1000));

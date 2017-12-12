@@ -9,9 +9,8 @@ class dbPedia {
         var query = /*"prefix dbpedia: <http://dbpedia.org/resource/>"+*/
             "prefix dbpedia-owl: <http://dbpedia.org/ontology/>" +
 
-            "select ?abstract ?thumbnail where { " +
-            "  <http://dbpedia.org/resource/" + param + "> dbpedia-owl:abstract ?abstract ;" +
-            "dbpedia-owl:thumbnail ?thumbnail ." +
+            "select ?abstract where { " +
+            "  <http://dbpedia.org/resource/" + param + "> dbpedia-owl:abstract ?abstract ." +
             "  filter(langMatches(lang(?abstract),\"en\"))" +
             "}";
         var client = new SparqlClient(endpoint);

@@ -9,7 +9,6 @@ var fs = require('fs');
 var mime = require('mime');
 var multer = require('multer');
 var upload = multer({ dest: 'js/public/uploads/' });
-var gs = require('./googleCStorage');
 var path = require('path');
 var engines = require('consolidate');
 
@@ -26,20 +25,15 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
     console.log('Sono in upload ' + req.file.path);
     var imageFile = fs.readFileSync(req.file.path);
     var encoded = new Buffer(imageFile).toString('base64');
-    //gs.upload(req.file.path);
 
     const makeRequest = await call();
     async function call() {
         const value1 = await gvision.googleAPIVision(req.file.path);
-        var value2;
         for(i = 1; i < value1.length && i < 3; i++){
             value1[0] += " " + value1[i];
             console.log(value1[0]);
         }
-        /*if(value1.length > 1)
-            value2 = await gsearch.googlesearch(value1[0]+" "+value1[1]);
-        else*/
-            value2 = await gsearch.googlesearch(value1[0]);
+        const value2 = await gsearch.googlesearch(value1[0]);
         const value3 = await dbpedia.dbpedia(value2[2]);
         await new Promise((resolve, reject) => setTimeout(resolve, 5000));
         console.log(value3);
@@ -55,10 +49,8 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
                     image: "uploads/" + req.file.path.split('/').pop() };
 
     res.render('result', result);
-    //res.json(result);
     
     console.log('Finito');
-    //Dovrebbe arrivare un json nella pagina indicata e si può ottenere il risultato cercando il campo value
 });
 
 //listen in a specific port

@@ -36,12 +36,14 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
         const value3 = await dbpedia.dbpedia(value2[2]);
         await new Promise((resolve, reject) => setTimeout(resolve, 5000));
         console.log(value3);
-        return value3;
+        return [value2[0], value2[1], value3];
     }
 
 
-    console.log(makeRequest);
-    res.json({ value: makeRequest });
+    console.log(makeRequest[0], makeRequest[2]);
+    res.json({ name: makeRequest[0],
+               types: makeRequest[1],
+               description: makeRequest[2] });
     console.log('Finito');
     //Dovrebbe arrivare un json nella pagina indicata e si può ottenere il risultato cercando il campo value
 });

@@ -237,8 +237,18 @@ class HttpClient {
     }*/
     //data.results[0].address_components[1].short_name
     handleJson(data) {
-        location = data.results[0].address_components[2].short_name;
-        console.log(data.results[0].address_components[2].short_name);
+        var find = true;
+        var c = 0;
+        var array = data.results[0];
+        while(find ||c < array.address_components.length)
+        {
+            if(array.address_components[c].types[0] == "locality")
+            {
+                location = array.address_components[c].short_name;
+                find = false;
+            }
+            c++;
+        }
     }
 
     async elaborate (labels, landmark, latitude, longitude, web) {

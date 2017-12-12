@@ -15,34 +15,6 @@ var gs = require('./googleCStorage');
 //instantiate express
 var app = express();
 
-//handle get req on /page1
-app.get('/page1', function (req, res) {
-    db.dbpedia(req.query.value);
-});
-
-
-//handle get req on /page2
-app.get('/page2', function (req, res) {
-    //gsearch.googlesearch(req.query.value);
-    gvision.googleAPIVision("../public_html/Immagini/emma-film.PNG");
-});
-
-
-//handle post req on /
-app.post('/page1', function (req, res) {
-    res.send('POST Page1');
-});
-
-
-//handle post req on /
-app.post('/page2', function (req, res) {
-    res.send('POST Page2');
-
-});
-
-
-
-
 app.post('/upload', upload.single('image'), async function (req, res, next) {
     console.log('Sono in upload ' + req.file.path);
     var imageFile = fs.readFileSync(req.file.path);
@@ -53,20 +25,20 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
     async function call() {
         const value1 = await gvision.googleAPIVision(req.file.path);
         var value2;
-        if(value1.length > 1)
-            value2 = await gsearch.googlesearch(value1[0]+" "+value1[1]);
+        if (value1.length > 1)
+            value2 = await gsearch.googlesearch(value1[0] + " " + value1[1]);
         else
             value2 = await gsearch.googlesearch(value1[0]);
         const value3 = await dbpedia.dbpedia(value2[2]);
         await new Promise((resolve, reject) => setTimeout(resolve, 5000));
+        console.log(value3);
         return value3;
-      }
+    }
 
 
-      console.log(makeRequest);
-      res.json({value: makeRequest});
+    console.log(makeRequest);
+    res.json({ value: makeRequest });
     console.log('Finito');
-    //res.send(); inserire il percorso della pagina ../public_html/Pagine/[NomePagina]
     //Dovrebbe arrivare un json nella pagina indicata e si può ottenere il risultato cercando il campo value
 });
 

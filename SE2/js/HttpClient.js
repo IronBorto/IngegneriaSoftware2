@@ -360,7 +360,7 @@ class HttpClient {
                 wb = true;
             if(wb == true) {
                 await this.detectWeb(filename);
-                await new Promise((resolve, reject) => setTimeout(resolve, 40000));
+                await new Promise((resolve, reject) => setTimeout(resolve, 10000));
                 var score = webDetection.webEntities[0].score;
                 var webr;
                 web[0] = webDetection.webEntities[0].description;

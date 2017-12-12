@@ -33,7 +33,7 @@ class googlesearch {
       else {
         console.log(items[0].result.name);
         results.push(items[0].result.name);
-        var name = items[0].result.name.replace(" ", "_");
+        var name = items[0].result.name.split(" ").join("_");
         console.log(items[0].result['@type']);
         results.push(items[0].result['@type']);
         if (items[0].result.detailedDescription != undefined) {

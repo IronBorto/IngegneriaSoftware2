@@ -14,9 +14,19 @@ and open the template in the editor.
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <link rel="stylesheet" href="/app/CSS_barra_principale.css" type="text/css" charset="utf-8" />
-        <link rel="stylesheet" href="CSS_risultati.css">
-        
+        <link rel="stylesheet" href="./app/CSS_barra_principale.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="./app/CSS_risultati.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./app/mustache.js"></script>
+
+        <script>
+            /*function loadResult() {
+                var template = $('#template').html();
+                Mustache.parse(template);   // optional, speeds up future uses
+                var rendered = Mustache.render(template, res.result.description);
+                $('#description').html(rendered);
+            }*/
+        </script>
         
         <title>Intestazione</title>
         <meta charset="UTF-8">
@@ -35,14 +45,14 @@ and open the template in the editor.
             </script>
     </head>
     <body>
-        <iframe src="header.html" width="100%" frameborder="0"></iframe>
+        <iframe src="./app/header.html" width="100%" frameborder="0"></iframe>
         <br>
         <br>
         <!--parte immagini-->
         <div class="container">
             <!--Nome oggetto cercato-->
             <div class="resize-titolo">
-                Lion
+                {{name}}
             </div>
             <!-- immagini-->
             <div class="container">
@@ -50,7 +60,7 @@ and open the template in the editor.
                     <div class="thumbnail">
                         <a href="#"> 
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lion_d%27Afrique.jpg/280px-Lion_d%27Afrique.jpg"/>
-                            <span>Leone</span>
+                            <span>{{name}}</span>
                         </a>
                     </div>
                 </div>
@@ -127,7 +137,8 @@ and open the template in the editor.
             </label>
             <!--contenuto 1, associato alla descrizione-->
             <section id="content1" class="tab-content">
-            <p>contenuto 1</p>
+                <!--<script id="template" type="x-tmpl-mustache">  </script>-->
+                <p><div id="description">{{ description }}</div></p>
             </section>
             <!--contenuto 2, associato a: Carriera per People, Descrizione fisica per Animal, Mappa per Place, Autore per Art-->
             <section id="content2" class="tab-content">

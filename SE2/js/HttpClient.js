@@ -240,7 +240,7 @@ class HttpClient {
         var find = true;
         var c = 0;
         var array = data.results[0];
-        while(find ||c < array.address_components.length)
+        while(find && c < array.address_components.length)
         {
             if(array.address_components[c].types[0] == "locality")
             {
@@ -258,7 +258,7 @@ class HttpClient {
         if (latitude != 0 && longitude != 0) {
             //Visualizza su sito
             const data = latitude+","+longitude;
-            fetchJson("http://maps.googleapis.com/maps/api/geocode/json?latlng="+ data +"&language=en-EN")
+            fetchJson("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyA6ttUgcim5GpmMO2_2p6hmMFNB67pRTY8&latlng="+ data +"&language=en-EN")
             .then(response => {
                 this.handleJson(response);
                 result.push(location);
@@ -292,7 +292,7 @@ class HttpClient {
         //vision = new visions.ImageAnnotatorClient();
         
         await this.detectLabels(filename);
-        await new Promise((resolve, reject) => setTimeout(resolve, 40000));
+        await new Promise((resolve, reject) => setTimeout(resolve, 10000));
         //labels = require('./sampleLabel.json');
         //webDetection = require('./sampleWeb.json');
         if (labels != "err" && webDetection != "err"){
@@ -335,7 +335,7 @@ class HttpClient {
             var lm = "false";
             if (landmarkB == true){
                 landmarks = await this.detectLandmarks(filename);
-                await new Promise((resolve, reject) => setTimeout(resolve, 40000));
+                await new Promise((resolve, reject) => setTimeout(resolve, 10000));
                 if(landmarks.length == 0)
                     wb = true;
                 else {

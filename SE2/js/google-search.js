@@ -26,7 +26,7 @@ class googlesearch {
     KGSearch.kGraph.search(params, (err, items) => {
       if (err) {
         console.error(err);
-        const par = params.param.slice(0, -1);
+        const par = params.query.slice(0, -1);
         const string = googlesearch(par);
         results.push(string);
       }
@@ -48,7 +48,7 @@ class googlesearch {
           results.push(name);
       }
     });
-    await new Promise((resolve, reject) => setTimeout(resolve, 1000));
+    await new Promise((resolve, reject) => setTimeout(resolve, 2000));
     return results;
   }
 

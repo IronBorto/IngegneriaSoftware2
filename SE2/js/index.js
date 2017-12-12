@@ -8,7 +8,7 @@ var util = require('util');
 var fs = require('fs');
 var mime = require('mime');
 var multer = require('multer');
-var upload = multer({ dest: 'uploads/' });
+var upload = multer({ dest: 'js/public/uploads/' });
 var gs = require('./googleCStorage');
 var path = require('path');
 var engines = require('consolidate');
@@ -51,7 +51,8 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
 
     var result = { name: makeRequest[0],
                     types: makeRequest[1],
-                    description: makeRequest[2] };
+                    description: makeRequest[2],
+                    image: "uploads/" + req.file.path.split('/').pop() };
 
     res.render('result', result);
     //res.json(result);

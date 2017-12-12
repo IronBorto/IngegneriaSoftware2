@@ -266,6 +266,8 @@ class HttpClient {
         if (web != undefined)
             web.forEach ((w) => { 
                 result.push(w);
+                result.push("");
+                result.push("");
                 //Ricerca w su google-search.js
                 console.log(w);
                 //var result = gsearch.googlesearch(w);
@@ -324,21 +326,25 @@ class HttpClient {
             if (landmarkB == true){
                 landmarks = await this.detectLandmarks(filename);
                 await new Promise((resolve, reject) => setTimeout(resolve, 40000));
-                //const landmark = require('./sampleLandmark.json');
-                lat = landmarks[0].locations[0].latLng.latitude;
-                long = landmarks[0].locations[0].latLng.longitude;
-                lm = landmarks[0].description;
-                // Utilizza il landmark per ottenere nome e coordinate -->
-                /*
-                "locations": [
-                    {
-                    "latLng": {
-                        "latitude": 45.464239,
-                        "longitude": 9.190171
-                    }
-                    }
-                ]
-                */
+                if(landmarks.length == 0)
+                    wb = true;
+                else {
+                    //const landmark = require('./sampleLandmark.json');
+                    lat = landmarks[0].locations[0].latLng.latitude;
+                    long = landmarks[0].locations[0].latLng.longitude;
+                    lm = landmarks[0].description;
+                    // Utilizza il landmark per ottenere nome e coordinate -->
+                    /*
+                    "locations": [
+                        {
+                        "latLng": {
+                            "latitude": 45.464239,
+                            "longitude": 9.190171
+                        }
+                        }
+                    ]
+                    */
+                }
             }
             else
                 wb = true;

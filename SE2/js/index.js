@@ -6,14 +6,21 @@ var gvision = require('./HttpClient');
 var dbpedia = require('./dbPediaSearch');
 var util = require('util');
 var fs = require('fs');
-var util = require('util');
 var mime = require('mime');
 var multer = require('multer');
 var upload = multer({ dest: 'uploads/' });
 var gs = require('./googleCStorage');
+var path = require('path');
+var engines = require('consolidate');
 
 //instantiate express
 var app = express();
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.set('views', __dirname + '/views');
+app.engine('html', engines.mustache);
+app.set('view engine', 'html');
 
 app.post('/upload', upload.single('image'), async function (req, res, next) {
     console.log('Sono in upload ' + req.file.path);
@@ -41,9 +48,14 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
 
 
     console.log(makeRequest[0], makeRequest[2]);
-    res.json({ name: makeRequest[0],
-               types: makeRequest[1],
-               description: makeRequest[2] });
+
+    var result = { name: makeRequest[0],
+                    types: makeRequest[1],
+                    description: makeRequest[2] };
+
+    res.render('result', result);
+    //res.json(result);
+    
     console.log('Finito');
     //Dovrebbe arrivare un json nella pagina indicata e si può ottenere il risultato cercando il campo value
 });

@@ -24,19 +24,25 @@ class googlesearch {
     }
     var results = new Array(); 
     KGSearch.kGraph.search(params, (err, items) => {
-      if (err) 
+      if (err) {
         console.error(err);
-      console.log(items[0].result.name);
-      results.push(items[0].result.name);
-      console.log(items[0].result['@type']);
-      results.push(items[0].result['@type']);
-      if(items[0].result.detailedDescription != undefined) {
-        var url = decodeURIComponent(items[0].result.detailedDescription.url);
-        console.log(url);
-        var suffix = url.split("/");
-        console.log(suffix[suffix.length-1]);
-        //var result = dbPedia.dbpedia(suffix[suffix.length-1]);
-        results.push(suffix[suffix.length-1]);
+        const par = params.param.slice(0, -1);
+        const string = googlesearch(par);
+        results.push(string);
+      }
+      else {
+        console.log(items[0].result.name);
+        results.push(items[0].result.name);
+        console.log(items[0].result['@type']);
+        results.push(items[0].result['@type']);
+        if(items[0].result.detailedDescription != undefined) {
+          var url = decodeURIComponent(items[0].result.detailedDescription.url);
+          console.log(url);
+          var suffix = url.split("/");
+          console.log(suffix[suffix.length-1]);
+          //var result = dbPedia.dbpedia(suffix[suffix.length-1]);
+          results.push(suffix[suffix.length-1]);
+        }
       }
     });
     await new Promise((resolve, reject) => setTimeout(resolve, 1000));

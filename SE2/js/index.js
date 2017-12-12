@@ -25,9 +25,13 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
     async function call() {
         const value1 = await gvision.googleAPIVision(req.file.path);
         var value2;
-        if (value1.length > 1)
-            value2 = await gsearch.googlesearch(value1[0] + " " + value1[1]);
-        else
+        for(i = 1; i < value1.length && i < 3; i++){
+            value1[0] += " " + value1[i];
+            console.log(value1[0]);
+        }
+        /*if(value1.length > 1)
+            value2 = await gsearch.googlesearch(value1[0]+" "+value1[1]);
+        else*/
             value2 = await gsearch.googlesearch(value1[0]);
         const value3 = await dbpedia.dbpedia(value2[2]);
         await new Promise((resolve, reject) => setTimeout(resolve, 5000));

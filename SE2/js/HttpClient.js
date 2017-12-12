@@ -3,6 +3,7 @@
 const Vision = require('@google-cloud/vision');
 const vision = new Vision();
 const fetchJson = require('node-fetch-json');
+const webNeeded = [ "art", "painting"];
 //var gsearch = require('./google-search');
 
 var labels, webDetection, landmarks, location;
@@ -236,17 +237,18 @@ class HttpClient {
     }*/
     //data.results[0].address_components[1].short_name
     handleJson(data) {
-        location = data.results[0].address_components[1].short_name;
-        console.log(data.results[0].address_components[1].short_name);
+        location = data.results[0].address_components[2].short_name;
+        console.log(data.results[0].address_components[2].short_name);
     }
 
-    async elaborate (labels, latitude, longitude, web) {
+    async elaborate (labels, landmark, latitude, longitude, web) {
         var result = new Array();
-        result.push(web[0]);
+        if(landmark != "false")
+            result.push(landmark);
         if (latitude != 0 && longitude != 0) {
             //Visualizza su sito
             const data = latitude+","+longitude;
-            fetchJson("http://maps.googleapis.com/maps/api/geocode/json?latlng="+ data)
+            fetchJson("http://maps.googleapis.com/maps/api/geocode/json?latlng="+ data +"&language=en-EN")
             .then(response => {
                 this.handleJson(response);
                 result.push(location);
@@ -261,12 +263,16 @@ class HttpClient {
             //Aggiungi Label su sito
             console.log(lab);
         });
-        web.forEach ((w) => {
-            //Ricerca w su google-search.js
-            console.log(w);
-            //var result = gsearch.googlesearch(w);
-            //result.push(w);
-        });
+        if (web != undefined)
+            web.forEach ((w) => { 
+                result.push(w);
+                result.push("");
+                result.push("");
+                //Ricerca w su google-search.js
+                console.log(w);
+                //var result = gsearch.googlesearch(w);
+                //result.push(w);
+            });
         return result;
     }
 
@@ -276,7 +282,7 @@ class HttpClient {
         //vision = new visions.ImageAnnotatorClient();
         
         await this.detectLabels(filename);
-        await new Promise((resolve, reject) => setTimeout(resolve, 30000));
+        await new Promise((resolve, reject) => setTimeout(resolve, 40000));
         //labels = require('./sampleLabel.json');
         //webDetection = require('./sampleWeb.json');
         if (labels != "err" && webDetection != "err"){
@@ -285,8 +291,11 @@ class HttpClient {
             var lab = new Array();
             var web = new Array();
             var label;
+            var wb = false;
             for (c = 0; c < labels.length; c++) {
                 label = labels[c];
+                if (webNeeded.indexOf(label) >= 0)
+                    wb = true;
                 if(label.description == "landmark")
                     landmarkB = true;
                 else{
@@ -313,28 +322,35 @@ class HttpClient {
             });*/
             var lat = 0;
             var long = 0;
+            var lm = "false";
             if (landmarkB == true){
                 landmarks = await this.detectLandmarks(filename);
-                await new Promise((resolve, reject) => setTimeout(resolve, 30000));
-                //const landmark = require('./sampleLandmark.json');
-                lat = landmarks[0].locations[0].latLng.latitude;
-                long = landmarks[0].locations[0].latLng.longitude;
-                web[0] = landmarks[0].description;
-                // Utilizza il landmark per ottenere nome e coordinate -->
-                /*
-                "locations": [
-                    {
-                    "latLng": {
-                        "latitude": 45.464239,
-                        "longitude": 9.190171
-                    }
-                    }
-                ]
-                */
+                await new Promise((resolve, reject) => setTimeout(resolve, 40000));
+                if(landmarks.length == 0)
+                    wb = true;
+                else {
+                    //const landmark = require('./sampleLandmark.json');
+                    lat = landmarks[0].locations[0].latLng.latitude;
+                    long = landmarks[0].locations[0].latLng.longitude;
+                    lm = landmarks[0].description;
+                    // Utilizza il landmark per ottenere nome e coordinate -->
+                    /*
+                    "locations": [
+                        {
+                        "latLng": {
+                            "latitude": 45.464239,
+                            "longitude": 9.190171
+                        }
+                        }
+                    ]
+                    */
+                }
             }
-            else {
+            else
+                wb = true;
+            if(wb == true) {
                 await this.detectWeb(filename);
-                await new Promise((resolve, reject) => setTimeout(resolve, 30000));
+                await new Promise((resolve, reject) => setTimeout(resolve, 40000));
                 var score = webDetection.webEntities[0].score;
                 var webr;
                 web[0] = webDetection.webEntities[0].description;
@@ -349,7 +365,7 @@ class HttpClient {
                 }
             }
             
-            var result = await this.elaborate(lab, lat, long, web);
+            var result = await this.elaborate(lab, lm, lat, long, web);
             return result;
         }
         else

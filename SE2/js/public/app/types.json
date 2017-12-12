@@ -1,0 +1,28 @@
+{
+    "types": [
+        {
+            "people": [
+                {
+                    "type": "Person"
+                }
+            ]
+        },
+        {
+            "place": [
+                {
+                    "type": "Organization"
+                },
+                {
+                    "type": "Place"
+                }
+            ]
+        },
+        {
+            "artwork": [
+                {
+                    "type": "CreativeWork"
+                }
+            ]
+        }
+    ]
+}

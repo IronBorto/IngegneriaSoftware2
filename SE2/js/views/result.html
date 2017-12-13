@@ -20,16 +20,17 @@ and open the template in the editor.
         <script type="text/javascript" src="./app/mustache.js"></script>
 
                
-        <title>Intestazione</title>
+        <title>{{name}}</title>
         <meta charset="UTF-8">
         <!--funzione per mostrare le giuste informazioni in base alla categoria dell'immagine-->
             <script type="text/javascript">
                     function nasc(){
-                            var na = document.getElementsByClassName('people');
-                            for(i = 0; i<na.length; i++) {
-                                    na[i].style.display = 'inline';
-                                }
                             if(coordinate != undefined){
+                                //Prossima versione per inserire le coordinate
+                                var na = document.getElementsByClassName('people');
+                                for(i = 0; i<na.length; i++) {
+                                        na[i].style.display = 'inline';
+                                    }
                                 //Non so come vengono gestiti bene i bottoni, comunque se dovesse
                                 //entrare qua probabilmente va abilitato il campo mappa e quando 
                                 //cercherà le coordinate bisognerà inserire i campi
@@ -83,7 +84,7 @@ and open the template in the editor.
                 </a>
                 <!--torna alla pagina-->
                 <input type="radio" name="tabs" class="people" hidden>
-                <a href="">
+                <a href="./app/index.html">
                 <label for="tab3" class="people" id="nascosto">
                     <i class="fa fa-pencil-square-o"></i>
                     <span>Find something else</span>

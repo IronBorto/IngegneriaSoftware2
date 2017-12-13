@@ -28,13 +28,13 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
 
     const makeRequest = await call();
     async function call() {
-        const value1 = await gvision.googleAPIVision(req.file.path);
-        for(i = 1; i < value1.length && i < 3; i++){ 
+        const value1 = await gvision.googleAPIVision(req.file.path).catch(error => res.render('500.jade', {title:'500: Internal Server Error', error: error})); 
+        for(i = 1; i < value1[2].length && i < 3; i++){  
             value1[2][0] += " " + value1[2][i]; 
             console.log(value1[2][0]); 
         }
-        const value2 = await gsearch.googlesearch(value1[2][0]); 
-        const value3 = await dbpedia.dbpedia(value2[1]); 
+        const value2 = await gsearch.googlesearch(value1[2][0]).catch(error => res.render('500.jade', {title:'500: Internal Server Error', error: error})); 
+        const value3 = await dbpedia.dbpedia(value2[1]).catch(error => res.render('500.jade', {title:'500: Internal Server Error', error: error})); 
         await new Promise((resolve, reject) => setTimeout(resolve, 5000));
         console.log(value3);
         return [value1[0], value1[1], value2[0], value2[2], value3]; 
@@ -67,6 +67,18 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
     
     console.log('Finito');
 });
+
+// Handle 404 
+app.use(function(req, res) { 
+    res.status(400); 
+   res.render('404.jade', {title: '404: File Not Found'}); 
+}); 
+ 
+// Handle 500 
+app.use(function(error, req, res, next) { 
+    res.status(500); 
+   res.render('500.jade', {title:'500: Internal Server Error', error: error}); 
+}); 
 
 //listen in a specific port
 app.listen((process.env.PORT || 8088));

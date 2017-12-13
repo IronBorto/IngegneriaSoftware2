@@ -11,7 +11,7 @@
             "name": "Launch Program",
             "program": "${workspaceFolder}/js/index.js",
             "env": {
-                "GOOGLE_APPLICATION_CREDENTIALS": "./private/serviceAccount.json",    
+                "GOOGLE_APPLICATION_CREDENTIALS": "../../private/serviceAccount.json",    
                 "GCLOUD_PROJECT": "wheredidiseenthisbefore"            
             }
         }

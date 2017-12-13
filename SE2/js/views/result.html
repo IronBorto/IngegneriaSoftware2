@@ -25,12 +25,13 @@ and open the template in the editor.
         <!--funzione per mostrare le giuste informazioni in base alla categoria dell'immagine-->
             <script type="text/javascript">
                     function nasc(){
-                            if(coordinate != undefined){
-                                //Prossima versione per inserire le coordinate
-                                var na = document.getElementsByClassName('people');
+                            var na = document.getElementsByClassName('people');
                                 for(i = 0; i<na.length; i++) {
                                         na[i].style.display = 'inline';
                                     }
+                            if(coordinate != undefined){
+                                //Prossima versione per inserire le coordinate
+                                
                                 //Non so come vengono gestiti bene i bottoni, comunque se dovesse
                                 //entrare qua probabilmente va abilitato il campo mappa e quando 
                                 //cercherà le coordinate bisognerà inserire i campi

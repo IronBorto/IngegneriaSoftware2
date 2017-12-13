@@ -68,15 +68,14 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
     console.log('Finito');
 });
 
+app.get('/',function (req,res){
+   res.render('index');
+})
 // Handle 404 
 app.use(function(req, res) { 
     res.status(400); 
    res.render('404.jade', {title: '404: File Not Found'}); 
 }); 
- 
-app.get('/',function (req,res){
-    res.render('index');
-})
 
 // Handle 500 
 app.use(function(error, req, res, next) { 

@@ -17,9 +17,14 @@ class dbPedia {
         var result;
         client.query(query)
             .execute(function (error, results) {
-                console.log(results.results.bindings[0].abstract.value);
-                console.log(util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true) + "\n");
-                result = results.results.bindings[0].abstract.value;
+                if(error)
+                    console.log("Problem with dbpedia");
+                else
+                {
+                    console.log(results.results.bindings[0].abstract.value);
+                    console.log(util.inspect(arguments[1].results.bindings[0].abstract.value, null, 20, true) + "\n");
+                    result = results.results.bindings[0].abstract.value;
+                }
             });
         await new Promise((resolve, reject) => setTimeout(resolve, 2000));
         return result;

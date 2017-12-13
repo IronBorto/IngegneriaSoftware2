@@ -202,7 +202,7 @@ class HttpClient {
             }
             
             var result = await this.elaborate(lab, lm, lat, long, web);
-            return lat, long, result;
+            return [lat, long, result];
         }
         else
             return 0;

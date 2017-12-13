@@ -16,7 +16,11 @@ class googlesearch {
         const string = googlesearch(par);
         results.push(string);
       }
-      else {
+      else if(items == undefined){
+        console.log("Some problems with the google search call");
+      }
+      else
+        {
         console.log(items[0].result.name);
         results.push(items[0].result.name);
         var name = items[0].result.name.split(" ").join("_");
@@ -26,6 +30,7 @@ class googlesearch {
           var suffix = url.split("/");
           console.log(suffix[suffix.length - 1]);
           results.push(suffix[suffix.length - 1]);
+          results.push(url);
         }
         else
           results.push(name);

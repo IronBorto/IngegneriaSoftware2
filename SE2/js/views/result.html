@@ -50,8 +50,10 @@ and open the template in the editor.
         <!--parte immagini-->
         <div class="container">
             <!--Nome oggetto cercato-->
-            <div class="resize-titolo">
+            <div class="row">
+            <div class="resize-titolo text-center">
                 {{name}}
+            </div>
             </div>
             <!-- immagini-->
             <div class="container">
@@ -70,18 +72,21 @@ and open the template in the editor.
             <div class="tab_container"> <!--sempre presente, descrizione-->
                 <input id="tab1" type="radio" name="tabs" checked>
                 <label for="tab1"><i class="fa fa-code"></i><span>Description</span></label>
-                <!--people carriera-->
-                <input type="radio" name="tabs" class="people" hidden>
-                <label for="tab2" class="people" id="nascosto">
-                    <i class="fa fa-pencil-square-o"></i>
-                    <span>Career</span>
-                </label>
+                
                 <!--people Premi-->
                 <input type="radio" name="tabs" class="people" hidden>
                 <a href="{{wiki}}" target="_blank">
-                <label for="tab3" class="people" id="nascosto">
+                <label for="tab2" class="people" id="nascosto">
                     <i class="fa fa-pencil-square-o"></i>
                     <span>Wikipedia Page</span>
+                </label>
+                </a>
+                <!--torna alla pagina-->
+                <input type="radio" name="tabs" class="people" hidden>
+                <a href="">
+                <label for="tab3" class="people" id="nascosto">
+                    <i class="fa fa-pencil-square-o"></i>
+                    <span>Find something else</span>
                 </label>
                 </a>
                 <!--Animal descrizion fisica-->

@@ -146,7 +146,7 @@ class HttpClient {
     async googleAPIVision (filename) {
         
         await this.detectLabels(filename);
-        await new Promise((resolve, reject) => setTimeout(resolve, 10000));
+        await new Promise((resolve, reject) => setTimeout(resolve, 20000));
         if (labels != "err" && webDetection != "err"){
             var landmarkB = false;
             var c = 0;
@@ -174,7 +174,7 @@ class HttpClient {
             var lm = "false";
             if (landmarkB == true){
                 landmarks = await this.detectLandmarks(filename);
-                await new Promise((resolve, reject) => setTimeout(resolve, 10000));
+                await new Promise((resolve, reject) => setTimeout(resolve, 20000));
                 if(landmarks.length == 0)
                     wb = true;
                 else {
@@ -187,7 +187,7 @@ class HttpClient {
                 wb = true;
             if(wb == true) {
                 await this.detectWeb(filename);
-                await new Promise((resolve, reject) => setTimeout(resolve, 10000));
+                await new Promise((resolve, reject) => setTimeout(resolve, 20000));
                 var score = webDetection.webEntities[0].score;
                 var webr;
                 web[0] = webDetection.webEntities[0].description;
@@ -202,7 +202,7 @@ class HttpClient {
             }
             
             var result = await this.elaborate(lab, lm, lat, long, web);
-            return result;
+            return lat, long, result;
         }
         else
             return 0;

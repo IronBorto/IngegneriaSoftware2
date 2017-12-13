@@ -29,24 +29,37 @@ app.post('/upload', upload.single('image'), async function (req, res, next) {
     const makeRequest = await call();
     async function call() {
         const value1 = await gvision.googleAPIVision(req.file.path);
-        for(i = 1; i < value1.length && i < 3; i++){
-            value1[0] += " " + value1[i];
-            console.log(value1[0]);
+        for(i = 3; i < value1.length && i < 5; i++){ 
+            value1[2] += " " + value1[i]; 
+            console.log(value1[2]); 
         }
-        const value2 = await gsearch.googlesearch(value1[0]);
-        const value3 = await dbpedia.dbpedia(value2[2]);
+        const value2 = await gsearch.googlesearch(value1[2]); 
+        const value3 = await dbpedia.dbpedia(value2[1]); 
         await new Promise((resolve, reject) => setTimeout(resolve, 5000));
         console.log(value3);
-        return [value2[0], value2[1], value3];
+        return [value1[0], value1[1],value2[0], value3]; 
     }
 
 
     console.log(makeRequest[0], makeRequest[2]);
 
-    var result = { name: makeRequest[0],
-                    types: makeRequest[1],
-                    description: makeRequest[2],
-                    image: "uploads/" + req.file.path.split('/').pop() };
+    var result; 
+    if(makeRequest[0] != 0 && makeRequest[1] != 0) 
+        result = {  name: makeRequest[2], 
+                    coordinate: [ 
+                        { 
+                            latitude: makeRequest[0] 
+                        }, 
+                        { 
+                            longitude: makeRequest[1] 
+                        } 
+                    ], 
+                    description: makeRequest[3], 
+                    image: "uploads/" + req.file.path.split('/').pop() }; 
+    else 
+    result = {  name: makeRequest[2], 
+                description: makeRequest[3], 
+                image: "uploads/" + req.file.path.split('/').pop() }; 
 
     res.render('result', result);
     

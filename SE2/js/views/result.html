@@ -22,13 +22,20 @@ and open the template in the editor.
                
         <title>Intestazione</title>
         <meta charset="UTF-8">
+        <!--funzione per mostrare le giuste informazioni in base alla categoria dell'immagine-->
             <script type="text/javascript">
-                <!--funzione per mostrare le giuste informazioni in base alla categoria dell'immagine-->
                     function nasc(){
                             var na = document.getElementsByClassName('people');
                             for(i = 0; i<na.length; i++) {
                                     na[i].style.display = 'inline';
                                 }
+                            if(coordinate != undefined){
+                                //Non so come vengono gestiti bene i bottoni, comunque se dovesse
+                                //entrare qua probabilmente va abilitato il campo mappa e quando 
+                                //cercherà le coordinate bisognerà inserire i campi
+                                //{{coordinate.latitude}}, {{coordinate.longitude}}
+                            }
+                                
                                 na[0].id='tab2';
                                 na[2].id='tab3';
 
@@ -61,7 +68,7 @@ and open the template in the editor.
         <!--parte informazioni, sono tutte nascoste tranne la descrizione, poi in base alla categoria vengono mostrate-->
         <div class="tab_container"> <!--sempre presente, descrizione-->
             <input id="tab1" type="radio" name="tabs" checked>
-            <label for="tab1"><i class="fa fa-code"></i><span>Desciption</span></label>
+            <label for="tab1"><i class="fa fa-code"></i><span>Description</span></label>
             <!--people carriera-->
             <input type="radio" name="tabs" class="people" hidden>
             <label for="tab2" class="people" id="nascosto">

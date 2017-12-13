@@ -74,6 +74,10 @@ app.use(function(req, res) {
    res.render('404.jade', {title: '404: File Not Found'}); 
 }); 
  
+app.get('/',function (req,res){
+    res.render('index');
+})
+
 // Handle 500 
 app.use(function(error, req, res, next) { 
     res.status(500); 

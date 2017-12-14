@@ -1,6 +1,6 @@
 const gs = require('./google-search');
 
-describe('Get the wikipedia url of the entety searched', () => {
+describe('Get the wikipedia url of the entity searched', () => {
     it('should return string', () => {
         return gs.googlesearch('James D\'Arcy')
             .then(data => {

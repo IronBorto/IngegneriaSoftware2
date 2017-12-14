@@ -1,7 +1,7 @@
 const dbp = require('./dbPediaSearch.js');
 const result = require('./jamesdarcy');
 
-describe('Return desciption of the query searced', () => {
+describe('Return description of the query searched', () => {
     it('should return string', () => {
         return dbp.dbpedia('James_D\'Arcy')
             .then(data => {
